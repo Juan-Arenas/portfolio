@@ -76,8 +76,8 @@ section{position:relative;overflow:hidden}
 .btn svg{width:14px;height:14px;fill:currentColor;flex-shrink:0}
 
 .right{flex-shrink:0;width:clamp(140px,24%,185px)}
-.photo-main{width:100%;min-height:220px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(80,100,220,.25)}
-.photo-main img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.photo-main{width:100%;min-height:220px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(80,100,220,.25);background:#0c0c38}
+.photo-main img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block}
 /* Projects inline in #about */
 .projects-wrap{width:100%;max-width:960px;z-index:5}
 .sec-label{font-size:.6rem;letter-spacing:.38em;text-transform:uppercase;color:rgba(100,150,255,.8);margin-bottom:10px}
@@ -109,10 +109,13 @@ footer p{font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.1em}
   nav{padding:13px 18px}
   .nav-links{gap:14px}
   .card-wrap{width:92vw}
-  .card{padding:22px 18px 22px;border-radius:24px}
-  .row{flex-direction:column}
+  .card{padding:18px 16px 20px;border-radius:22px;overflow:hidden}
+  .row{flex-direction:column;gap:16px}
   .right{width:100%}
-  .photo-main{height:260px;object-fit:cover}
+  .photo-main{height:300px;min-height:unset}
+  .photo-main img{object-position:center 10%}
+  .icon{display:none}
+  .neon-canvas{display:none}
   .i-ae{width:62px;height:62px;left:-32px;top:4px;border-radius:14px}
   .i-ai{width:58px;height:58px;left:-28px;bottom:4px;border-radius:14px}
   .i-pr{width:66px;height:66px;right:-34px;top:4px;border-radius:14px}
