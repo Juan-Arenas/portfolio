@@ -297,80 +297,6 @@
       line-height: 1
     }
 
-    /* MICROINTERACTIONS */
-    .btp,
-    .bto,
-    .tb,
-    .smb,
-    .music-btn,
-    .terminal-chip {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btp::after,
-    .bto::after,
-    .tb::after,
-    .smb::after,
-    .music-btn::after,
-    .terminal-chip::after {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.35);
-      transform: scale(0);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .ripple-active::after {
-      animation: ripple .55s ease-out;
-    }
-
-    @keyframes ripple {
-      0% { transform: scale(0); opacity: .55; }
-      100% { transform: scale(24); opacity: 0; }
-    }
-
-    .nls a {
-      position: relative;
-    }
-
-    .nls a::after {
-      content: '';
-      position: absolute;
-      left: .85rem;
-      right: .85rem;
-      bottom: .18rem;
-      height: 2px;
-      border-radius: 99px;
-      background: linear-gradient(90deg, #6366f1, #a855f7);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform .25s ease;
-    }
-
-    .nls a:hover::after,
-    .nls a.act::after {
-      transform: scaleX(1);
-    }
-
-    /* SCROLL PROGRESS */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      z-index: 100;
-      background: linear-gradient(90deg, #6366f1, #a855f7);
-      box-shadow: 0 0 12px rgba(168, 85, 247, .45);
-      transition: width .08s linear;
-      pointer-events: none;
-    }
-
     /* SIDEBAR */
     .ov {
       display: none;
@@ -1053,40 +979,15 @@
       border-radius: 1rem;
       background: rgba(255, 255, 255, .02);
       border: 1px solid rgba(255, 255, 255, .07);
-      transition: all .3s cubic-bezier(.2,.8,.2,1);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      user-select: none;
+      transition: all .3s;
+      cursor: default
     }
 
-    .tc::after {
-      content: '';
-      position: absolute;
-      inset: auto 20% -45% 20%;
-      height: 70px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, .22);
-      filter: blur(22px);
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .tc:hover,
-    .tc.selected {
+    .tc:hover {
       background: rgba(99, 102, 241, .1);
       border-color: rgba(99, 102, 241, .4);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(99, 102, 241, .15);
-    }
-
-    .tc:hover::after,
-    .tc.selected::after {
-      opacity: 1;
-    }
-
-    .tc:active {
-      transform: translateY(-2px) scale(.98);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, .15)
     }
 
     .tic {
@@ -1100,51 +1001,6 @@
       font-weight: 500;
       color: rgba(209, 213, 219, .8);
       text-align: center
-    }
-
-    .tech-detail {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(139, 92, 246, .25);
-      border-radius: 1.25rem;
-      background: linear-gradient(135deg, rgba(99, 102, 241, .08), rgba(168, 85, 247, .04));
-      min-height: 150px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-      align-items: center;
-      animation: techIn .35s ease both;
-    }
-
-    .tech-detail-icon {
-      width: 3.5rem;
-      height: 3.5rem;
-      padding: .65rem;
-      border-radius: 1rem;
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.1);
-    }
-
-    .tech-detail h3 {
-      margin-bottom: .35rem;
-      font-size: 1.1rem;
-    }
-
-    .tech-detail p {
-      color: rgba(203, 213, 225, .78);
-      font-size: .85rem;
-      line-height: 1.7;
-    }
-
-    .tech-detail .tech-hint {
-      color: rgba(167, 139, 250, .85);
-      font-size: .72rem;
-      margin-top: .45rem;
-    }
-
-    @keyframes techIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .smb {
@@ -1167,131 +1023,128 @@
       border-color: rgba(99, 102, 241, .3)
     }
 
-    /* TERMINAL */
-    .terminal-section {
-      padding-top: 2rem;
-      padding-bottom: 3rem;
-    }
 
-    .terminal-shell {
-      max-width: 900px;
+
+    /* INTERACTIVE TERMINAL */
+    #Terminal { padding-top: 4rem; padding-bottom: 5rem; }
+    .terminal-wrap {
+      max-width: 1100px;
       margin: 0 auto;
-      border: 1px solid rgba(139, 92, 246, .28);
-      border-radius: 1.25rem;
-      overflow: hidden;
-      background: rgba(8, 8, 24, .82);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, .3);
-      backdrop-filter: blur(16px);
+      position: relative;
     }
-
+    .terminal-glow {
+      position: absolute;
+      inset: 8% 10%;
+      background: radial-gradient(circle, rgba(99,102,241,.16), transparent 62%);
+      filter: blur(45px);
+      pointer-events: none;
+    }
+    .terminal {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.15rem;
+      background: rgba(7, 8, 20, .88);
+      border: 1px solid rgba(139, 92, 246, .22);
+      box-shadow: 0 30px 80px rgba(0,0,0,.42), 0 0 45px rgba(99,102,241,.08);
+      backdrop-filter: blur(18px);
+    }
+    .terminal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(99,102,241,.045), transparent 42%, rgba(168,85,247,.035));
+      pointer-events: none;
+    }
     .terminal-head {
+      position: relative;
+      z-index: 2;
+      height: 48px;
       display: flex;
       align-items: center;
-      gap: .55rem;
-      padding: .8rem 1rem;
+      justify-content: space-between;
+      padding: 0 1rem;
       border-bottom: 1px solid rgba(255,255,255,.07);
       background: rgba(255,255,255,.025);
     }
-
-    .terminal-dot {
-      width: .65rem;
-      height: .65rem;
-      border-radius: 50%;
-      background: rgba(255,255,255,.18);
-    }
-
+    .terminal-dots { display:flex; gap:.42rem; align-items:center; }
+    .terminal-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.22); }
     .terminal-title {
-      margin-left: .35rem;
-      color: rgba(148,163,184,.8);
-      font-size: .72rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      position:absolute; left:50%; transform:translateX(-50%);
+      font: 500 .72rem/1 'Poppins', sans-serif;
+      letter-spacing:.08em; color:rgba(203,213,225,.55);
     }
-
-    .terminal-body {
-      padding: 1.25rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: .82rem;
-      line-height: 1.75;
+    .terminal-status {
+      display:flex; align-items:center; gap:.45rem;
+      font-size:.68rem; color:rgba(148,163,184,.62);
     }
-
-    .terminal-output {
-      min-height: 230px;
-      max-height: 330px;
-      overflow-y: auto;
-      color: rgba(226,232,240,.86);
-      scrollbar-width: thin;
+    .terminal-status i { width:6px; height:6px; border-radius:50%; background:#818cf8; box-shadow:0 0 10px rgba(129,140,248,.8); }
+    .terminal-body { position:relative; z-index:1; padding:1.5rem; }
+    .terminal-intro { margin-bottom:1.2rem; }
+    .terminal-kicker { color:#a78bfa; font:600 .7rem/1.4 'Poppins',sans-serif; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.55rem; }
+    .terminal-heading { font-size:1.18rem; font-weight:600; color:#f8fafc; margin-bottom:.35rem; }
+    .terminal-helptext { color:rgba(148,163,184,.75); font-size:.78rem; line-height:1.6; }
+    .terminal-actions {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:.65rem;
+      margin:1.2rem 0 1.1rem;
     }
-
-    .terminal-line {
-      margin-bottom: .35rem;
-      white-space: pre-wrap;
-      word-break: break-word;
+    .term-btn {
+      position:relative; display:flex; align-items:center; gap:.7rem;
+      min-height:58px; padding:.75rem .85rem;
+      border:1px solid rgba(255,255,255,.075); border-radius:.75rem;
+      background:rgba(255,255,255,.025); color:#cbd5e1;
+      cursor:pointer; text-align:left; font-family:'Poppins',sans-serif;
+      transition:transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
     }
-
-    .terminal-command {
-      color: #a78bfa;
+    .term-btn::after { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.05)); opacity:0; transition:opacity .25s; pointer-events:none; }
+    .term-btn:hover, .term-btn:focus-visible {
+      transform:translateY(-2px); border-color:rgba(129,140,248,.35);
+      background:rgba(99,102,241,.055); box-shadow:0 10px 28px rgba(0,0,0,.18), 0 0 18px rgba(99,102,241,.08); outline:none;
     }
-
-    .terminal-success {
-      color: #86efac;
+    .term-btn:hover::after, .term-btn:focus-visible::after { opacity:1; }
+    .term-icon {
+      position:relative; z-index:1; width:31px; height:31px; flex:0 0 31px;
+      display:grid; place-items:center; border-radius:.55rem;
+      color:#a78bfa; background:rgba(99,102,241,.09); border:1px solid rgba(139,92,246,.14);
     }
-
-    .terminal-muted {
-      color: rgba(148,163,184,.65);
+    .term-icon svg { width:16px; height:16px; }
+    .term-btn-text { position:relative; z-index:1; min-width:0; }
+    .term-btn-label { display:block; font-size:.78rem; font-weight:600; color:#e2e8f0; }
+    .term-btn-desc { display:block; margin-top:.12rem; font-size:.64rem; color:rgba(148,163,184,.58); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .terminal-screen {
+      min-height:230px; max-height:330px; overflow:auto; padding:1rem;
+      border:1px solid rgba(255,255,255,.06); border-radius:.75rem;
+      background:rgba(0,0,0,.28); box-shadow:inset 0 1px 18px rgba(0,0,0,.18);
+      scrollbar-width:thin; scrollbar-color:rgba(99,102,241,.28) transparent;
     }
-
-    .terminal-form {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      margin-top: 1rem;
-      padding-top: .85rem;
-      border-top: 1px solid rgba(255,255,255,.07);
-    }
-
-    .terminal-prompt {
-      color: #c4b5fd;
-      white-space: nowrap;
-    }
-
+    .term-line { font:400 .75rem/1.75 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color:rgba(203,213,225,.78); white-space:pre-wrap; word-break:break-word; }
+    .term-line.cmd { color:#a5b4fc; }
+    .term-line.muted { color:rgba(148,163,184,.55); }
+    .term-line.success { color:#c4b5fd; }
+    .term-line strong { color:#f8fafc; font-weight:600; }
+    .term-project { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.38rem .5rem; margin:.12rem 0; border-radius:.45rem; color:rgba(226,232,240,.78); cursor:pointer; transition:background .2s,color .2s; }
+    .term-project:hover { background:rgba(99,102,241,.09); color:#fff; }
+    .term-project span:last-child { color:rgba(167,139,250,.72); font-size:.68rem; }
+    .terminal-input-row { display:flex; align-items:center; gap:.5rem; margin-top:.7rem; }
+    .terminal-prompt { color:#a78bfa; font:600 .75rem ui-monospace,monospace; white-space:nowrap; }
     .terminal-input {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: 0;
-      outline: 0;
-      color: #fff;
-      font: inherit;
+      flex:1; min-width:0; border:0; outline:0; background:transparent; color:#e2e8f0;
+      font:400 .75rem ui-monospace,monospace; caret-color:#a78bfa;
     }
-
-    .terminal-input::placeholder {
-      color: rgba(148,163,184,.35);
+    .terminal-input::placeholder { color:rgba(148,163,184,.35); }
+    .terminal-tip { margin-top:.65rem; text-align:center; color:rgba(148,163,184,.43); font-size:.66rem; }
+    @media(max-width:768px) {
+      .terminal-body { padding:1rem; }
+      .terminal-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .terminal-title { display:none; }
+      .term-btn { min-height:54px; }
+      .terminal-screen { min-height:220px; }
     }
-
-    .terminal-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: .8rem;
-    }
-
-    .terminal-chip {
-      border: 1px solid rgba(139,92,246,.2);
-      background: rgba(139,92,246,.06);
-      color: rgba(196,181,253,.85);
-      border-radius: 999px;
-      padding: .35rem .65rem;
-      font: inherit;
-      font-size: .7rem;
-      cursor: pointer;
-      transition: all .2s;
-    }
-
-    .terminal-chip:hover {
-      transform: translateY(-2px);
-      background: rgba(139,92,246,.14);
-      border-color: rgba(139,92,246,.4);
-      color: #fff;
+    @media(max-width:480px) {
+      .terminal-actions { grid-template-columns:1fr; }
+      .term-btn-desc { display:none; }
+      .terminal-screen { min-height:200px; padding:.8rem; }
     }
 
     /* CONTACT */
@@ -1483,19 +1336,6 @@
     }
 
     /* RESPONSIVE */
-    @media(max-width:768px) {
-      .tech-detail {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .tech-detail-icon {
-        margin: 0 auto;
-      }
-      .terminal-body {
-        padding: 1rem;
-      }
-    }
-
     @media(max-width:1024px) {
       .cg2 {
         grid-template-columns: 1fr
@@ -1956,8 +1796,8 @@
     <a href="#Home" class="nl">Arenas.dev</a>
     <ul class="nls">
       <li><a href="#Home" class="act">Inicio</a></li>
-      <li><a href="#Terminal">Terminal</a></li>
       <li><a href="#Portofolio">Portafolio</a></li>
+      <li><a href="#Terminal">Terminal</a></li>
       <li><a href="#Contact">Contacto</a></li>
     </ul>
     <button class="nmb" onclick="openSB()" aria-label="Menú">
@@ -1968,13 +1808,12 @@
       </svg>
     </button>
   </nav>
-  <div class="scroll-progress" id="scroll-progress"></div>
   <div class="ov" id="ov" onclick="closeSB()"></div>
   <aside class="sb" id="sb">
     <button class="sbc" onclick="closeSB()">✕ Cerrar menú</button>
     <a href="#Home" onclick="closeSB()">Inicio</a>
-    <a href="#Terminal" onclick="closeSB()">Terminal</a>
     <a href="#Portofolio" onclick="closeSB()">Portafolio</a>
+    <a href="#Terminal" onclick="closeSB()">Terminal</a>
     <a href="#Contact" onclick="closeSB()">Contacto</a>
   </aside>
 
@@ -2093,37 +1932,60 @@
     </a>
   </section>
 
+
+
   <!-- INTERACTIVE TERMINAL -->
-  <section id="Terminal" class="terminal-section">
-    <div class="sh" data-aos="fade-up" data-aos-duration="900">
+  <section id="Terminal">
+    <div class="sh" data-aos="fade-up" data-aos-duration="1000">
       <h2 class="stitle">Terminal</h2>
-      <p class="ssub">Conoce un poco más de mí escribiendo un comando.</p>
+      <p class="ssub">Explora el portafolio de una forma diferente. No necesitas conocer comandos.</p>
     </div>
-
-    <div class="terminal-shell" data-aos="fade-up" data-aos-duration="1100">
-      <div class="terminal-head">
-        <span class="terminal-dot"></span>
-        <span class="terminal-dot"></span>
-        <span class="terminal-dot"></span>
-        <span class="terminal-title">arenas@portfolio:~</span>
-      </div>
-
-      <div class="terminal-body">
-        <div class="terminal-output" id="terminal-output" aria-live="polite"></div>
-
-        <form class="terminal-form" id="terminal-form">
-          <span class="terminal-prompt">arenas@dev:~$</span>
-          <input class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false"
-            placeholder="escribe 'help'..." aria-label="Comando de terminal">
-        </form>
-
-        <div class="terminal-chips">
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('help')">help</button>
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('about')">about</button>
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('skills')">skills</button>
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('projects')">projects</button>
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('contact')">contact</button>
-          <button type="button" class="terminal-chip" onclick="runTerminalCommand('clear')">clear</button>
+    <div class="terminal-wrap" data-aos="fade-up" data-aos-duration="1100">
+      <div class="terminal-glow"></div>
+      <div class="terminal">
+        <div class="terminal-head">
+          <div class="terminal-dots"><i class="terminal-dot"></i><i class="terminal-dot"></i><i class="terminal-dot"></i></div>
+          <div class="terminal-title">arenas@portfolio — interactive shell</div>
+          <div class="terminal-status"><i></i> online</div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-intro">
+            <div class="terminal-kicker">Interactive portfolio</div>
+            <div class="terminal-heading">Explora la terminal</div>
+            <div class="terminal-helptext">Toca cualquiera de las opciones para ver la información. También puedes escribir un comando abajo.</div>
+          </div>
+          <div class="terminal-actions" id="terminal-actions">
+            <button class="term-btn" onclick="runTerminal('about')" aria-label="Ver sobre mí">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Sobre mí</span><span class="term-btn-desc">Conoce mi enfoque</span></span>
+            </button>
+            <button class="term-btn" onclick="runTerminal('projects')" aria-label="Ver proyectos">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M8 9h13"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Proyectos</span><span class="term-btn-desc">Explora trabajos realizados</span></span>
+            </button>
+            <button class="term-btn" onclick="runTerminal('services')" aria-label="Ver servicios">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Servicios</span><span class="term-btn-desc">Soluciones digitales</span></span>
+            </button>
+            <button class="term-btn" onclick="runTerminal('skills')" aria-label="Ver habilidades">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Skills</span><span class="term-btn-desc">Tecnologías que utilizo</span></span>
+            </button>
+            <button class="term-btn" onclick="runTerminal('contact')" aria-label="Ver contacto">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Contacto</span><span class="term-btn-desc">Hablemos de tu proyecto</span></span>
+            </button>
+            <button class="term-btn" onclick="runTerminal('help')" aria-label="Ver ayuda">
+              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 1 1 5.2 2c-.9.8-2.3 1.3-2.3 2.7"/><path d="M12 17h.01"/></svg></span>
+              <span class="term-btn-text"><span class="term-btn-label">Ayuda</span><span class="term-btn-desc">Comandos disponibles</span></span>
+            </button>
+          </div>
+          <div class="terminal-screen" id="terminal-screen" aria-live="polite"></div>
+          <div class="terminal-input-row">
+            <span class="terminal-prompt">arenas@portfolio:~$</span>
+            <input class="terminal-input" id="terminal-input" type="text" autocomplete="off" spellcheck="false" placeholder="Escribe un comando..." aria-label="Comando de terminal">
+          </div>
+          <div class="terminal-tip">Puedes tocar los botones o escribir <strong>help</strong> para ver los comandos.</div>
         </div>
       </div>
     </div>
@@ -2188,14 +2050,6 @@
     </div>
     <div class="tp" id="tp-techstack">
       <div class="tg" id="tg"></div>
-      <div class="tech-detail" id="tech-detail">
-        <img class="tech-detail-icon" id="tech-detail-icon" src="" alt="">
-        <div>
-          <h3 id="tech-detail-title">HTML5</h3>
-          <p id="tech-detail-text">Estructura semántica, formularios y componentes web responsive.</p>
-          <div class="tech-hint">Haz clic en otra tecnología para explorarla.</div>
-        </div>
-      </div>
     </div>
     <div class="tp" id="tp-reviews">
       <div class="gg-grid" id="gg-grid" style="margin-bottom: 3rem;"></div>
@@ -2273,20 +2127,6 @@
 
       <!-- Socials -->
       <div class="soc" data-aos="fade-left" data-aos-duration="1000">
-        <a class="sc3" href="https://wa.me/573128977181" target="_blank" rel="noopener noreferrer"
-          style="background:linear-gradient(to right,rgba(37,211,102,.14),rgba(37,211,102,.06));border-color:rgba(37,211,102,.28)">
-          <div class="sc3-ic" style="background:linear-gradient(135deg,#25D366,#128C7E)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="color:#fff">
-              <path d="M20 11.5a8 8 0 0 1-11.8 7.05L4 20l1.5-4.05A8 8 0 1 1 20 11.5Z" />
-              <path d="M8.5 8.5c.2-.45.42-.47.76-.47h.36c.2 0 .34.02.45.32l.55 1.35c.09.23.08.37-.06.56l-.4.52c-.12.15-.17.27-.06.47.23.43.66.96 1.16 1.4.56.49 1.03.71 1.45.9.2.09.32.08.44-.07l.54-.65c.13-.16.27-.19.5-.1l1.34.63c.23.11.35.16.4.3.05.14.05.8-.2 1.08-.25.29-.8.53-1.1.56-.29.03-.66.04-1.06-.09-.4-.13-.93-.33-1.6-.72-.66-.39-1.2-.85-1.65-1.32-.45-.47-.83-.99-1.08-1.43-.26-.44-.54-1.05-.54-1.57 0-.52.27-.97.39-1.17Z" />
-            </svg>
-          </div>
-          <div>
-            <div class="sc3-m">WhatsApp</div>
-            <div class="sc3-s">+57 312 897 7181</div>
-          </div>
-        </a>
         <a class="sc3" href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer"
           style="background:linear-gradient(to right,rgba(131,58,180,.15),rgba(228,64,95,.15));border-color:rgba(228,64,95,.3)">
           <div class="sc3-ic" style="background:linear-gradient(135deg,#833AB4,#E4405F,#FCAF45)">
@@ -2397,14 +2237,7 @@
     // NAVBAR
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('sc', window.scrollY > 40);
-
-      const progress = document.getElementById('scroll-progress');
-      if (progress) {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.width = max > 0 ? `${(window.scrollY / max) * 100}%` : '0%';
-      }
-
-      ['Home', 'Terminal', 'Portofolio', 'Contact'].forEach(id => {
+      ['Home', 'Portofolio', 'Contact'].forEach(id => {
         const s = document.getElementById(id);
         const a = document.querySelector(`.nls a[href="#${id}"]`);
         if (!s || !a) return;
@@ -2423,83 +2256,6 @@
       document.getElementById('tp-' + name).classList.add('act');
       AOS.refresh();
     }
-
-    // INTERACTIVE TERMINAL
-    const terminalOutput = document.getElementById('terminal-output');
-    const terminalInput = document.getElementById('terminal-input');
-    const terminalForm = document.getElementById('terminal-form');
-
-    const terminalCommands = {
-      help: () => [
-        '<span class="terminal-success">Comandos disponibles:</span>',
-        '  about     → quién soy',
-        '  skills    → tecnologías que uso',
-        '  projects  → mis proyectos',
-        '  contact   → cómo contactarme',
-        '  clear     → limpiar terminal'
-      ],
-      about: () => [
-        '<span class="terminal-success">Arenas</span> — estudiante de Ingeniería Informática.',
-        'Enfocado en desarrollo Front-End y en crear experiencias digitales atractivas.'
-      ],
-      skills: () => [
-        '<span class="terminal-success">Stack:</span> HTML5 · CSS3 · JavaScript · Tailwind CSS',
-        'ReactJS · Vite · Bootstrap'
-      ],
-      projects: () => [
-        '<span class="terminal-success">Proyectos:</span>',
-        ...projects.map(p => `  • ${p.title}`)
-      ],
-      contact: () => [
-        'Puedes encontrarme en la sección <span class="terminal-command">Contacto</span>.',
-        'Escribe <span class="terminal-command">contact</span> para volver a esta sección.'
-      ]
-    };
-
-    function appendTerminalLine(content, className = '') {
-      if (!terminalOutput) return;
-      const line = document.createElement('div');
-      line.className = `terminal-line ${className}`;
-      line.innerHTML = content;
-      terminalOutput.appendChild(line);
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    }
-
-    function runTerminalCommand(rawCommand) {
-      const command = String(rawCommand || '').trim().toLowerCase();
-      if (!command) return;
-
-      appendTerminalLine(`<span class="terminal-muted">arenas@dev:~$</span> ${command}`);
-
-      if (command === 'clear') {
-        terminalOutput.innerHTML = '';
-        appendTerminalLine('<span class="terminal-success">Terminal limpia. Escribe <span class="terminal-command">help</span> para continuar.</span>');
-        return;
-      }
-
-      if (terminalCommands[command]) {
-        terminalCommands[command]().forEach(line => appendTerminalLine(line));
-      } else {
-        appendTerminalLine(`Comando no encontrado: <span class="terminal-command">${command}</span>. Escribe <span class="terminal-command">help</span>.`);
-      }
-
-      if (command === 'contact') {
-        setTimeout(() => document.getElementById('Contact')?.scrollIntoView({ behavior: 'smooth' }), 250);
-      }
-
-      if (terminalInput) {
-        terminalInput.value = '';
-        terminalInput.focus();
-      }
-    }
-
-    terminalForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      runTerminalCommand(terminalInput?.value);
-    });
-
-    appendTerminalLine('<span class="terminal-success">Bienvenido a arenas.dev 👋</span>');
-    appendTerminalLine('Escribe <span class="terminal-command">help</span> para ver los comandos disponibles.');
 
     // MUSIC CONTROL SYSTEM
     const audio = document.getElementById('bg-music');
@@ -2602,9 +2358,9 @@
       { title: 'Valen Makeup', desc: 'Tienda web de maquillaje con catálogo de productos, presentación moderna y experiencia de compra.', link: 'https://valen-makeup.kyte.site/', image: 'valenmakeup.jpeg' },
       { title: 'VehiGrúas', desc: 'Plataforma web para servicio de grúas vehiculares con información de contacto y servicios disponibles.', link: 'https://vehigruas.netlify.app', image: 'vehigruas.jpeg' },
       { title: 'Ateneas Luxury', desc: 'Sitio web de lujo con estética refinada y experiencia premium para el usuario.', link: 'https://ateneas-luxury.com', image: 'AteneasLuxury.jpeg' },
-      { title: 'Álvarez Perfumería', desc: 'Sitio web para perfumería con catálogo de productos, diseño elegante y experiencia de usuario cuidada.', link: 'https://alvarezperfumeria.netlify.app', image: 'AlvarezPerfumeria.jpeg' },
-      { title: 'Brylica Joyería', desc: 'Tienda online de joyería con catálogo de productos y diseño sofisticado que refleja la elegancia de la marca.', link: 'https://brylicajoyeria.netlify.app', image: 'brylicajoyerai.jpeg' },
-      { title: 'Joss Design', desc: 'Portafolio creativo de diseño con presentación visual impactante y estética moderna.', link: 'https://jossdesign.netlify.app', image: 'jossdesign.jpeg' },
+      { title: 'Álvarez Perfumería', desc: 'Sitio web para perfumería con catálogo de productos, diseño elegante y experiencia de usuario cuidada.', link: 'https://alvarezperfumeria.netlify.app', image: 'ÁlvarezPerfumeria.jpeg' },
+      { title: 'Brylica Joyería', desc: 'Tienda online de joyería con catálogo de productos y diseño sofisticado que refleja la elegancia de la marca.', link: 'https://brylicajoyeria.netlify.app', image: 'brylicajoyeria.jpeg' },
+      { title: 'Joss Design', desc: 'Portafolio creativo de diseño con presentación visual impactante y estética moderna.', link: 'https://jossdesign.netlify.app', image: 'JossDesign.jpeg' },
     ];
 
     const reviews = [
@@ -2625,13 +2381,13 @@
     ];
 
     const techs = [
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', name: 'HTML5', desc: 'Estructura semántica, formularios y componentes web responsive.' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', name: 'CSS3', desc: 'Diseño visual, layouts, responsive design, animaciones y microinteracciones.' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', name: 'JavaScript', desc: 'Interactividad, manipulación del DOM, eventos y lógica del lado del cliente.' },
-      { img: 'https://tse1.mm.bing.net/th/id/OIP.GdUWbrVtbNezIRl6jg_ymAHaEh?rs=1&pid=ImgDetMain&o=7&rm=3', name: 'Tailwind CSS', desc: 'Construcción rápida de interfaces modernas usando utilidades y diseño responsive.' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', name: 'ReactJS', desc: 'Interfaces por componentes, estados, props y experiencias web dinámicas.' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg', name: 'Vite', desc: 'Entorno de desarrollo rápido para proyectos Front-End modernos.' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', name: 'Bootstrap', desc: 'Componentes y sistemas responsive para crear interfaces de forma eficiente.' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', name: 'HTML5' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', name: 'CSS3' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', name: 'JavaScript' },
+      { img: 'https://tse1.mm.bing.net/th/id/OIP.GdUWbrVtbNezIRl6jg_ymAHaEh?rs=1&pid=ImgDetMain&o=7&rm=3', name: 'Tailwind CSS' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', name: 'ReactJS' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg', name: 'Vite' },
+      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', name: 'Bootstrap' },
     ];
 
     const PER = 7; let showAll = false;
@@ -2671,31 +2427,10 @@
 
     function renderTech() {
       document.getElementById('tg').innerHTML = techs.map((t, i) => `
-    <button type="button" class="tc${i === 0 ? ' selected' : ''}" data-aos="fade-up"
-      data-aos-delay="${(i % 4) * 150}" onclick="selectTech(${i})" aria-label="Ver información de ${t.name}">
+    <div class="tc" data-aos="fade-up" data-aos-delay="${(i % 4) * 150}">
       <img src="${t.img}" class="tic" alt="${t.name}" onerror="this.style.opacity='.3'">
       <span class="tn">${t.name}</span>
-    </button>`).join('');
-      selectTech(0);
-    }
-
-    function selectTech(index) {
-      const t = techs[index];
-      if (!t) return;
-      document.querySelectorAll('.tc').forEach((card, i) => {
-        card.classList.toggle('selected', i === index);
-      });
-      const icon = document.getElementById('tech-detail-icon');
-      const title = document.getElementById('tech-detail-title');
-      const desc = document.getElementById('tech-detail-text');
-      const panel = document.getElementById('tech-detail');
-      if (icon) { icon.src = t.img; icon.alt = t.name; }
-      if (title) title.textContent = t.name;
-      if (desc) desc.textContent = t.desc;
-      if (panel) {
-        panel.style.animation = 'none';
-        requestAnimationFrame(() => { panel.style.animation = 'techIn .35s ease both'; });
-      }
+    </div>`).join('');
     }
 
     function renderReviews() {
@@ -2730,14 +2465,132 @@
     </div>`).join('');
     }
 
-    // BUTTON RIPPLE MICROINTERACTION
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('.btp, .bto, .tb, .smb, .music-btn, .terminal-chip');
-      if (!target) return;
-      target.classList.remove('ripple-active');
-      requestAnimationFrame(() => target.classList.add('ripple-active'));
-      setTimeout(() => target.classList.remove('ripple-active'), 600);
-    });
+
+
+    // INTERACTIVE TERMINAL
+    const terminalScreen = document.getElementById('terminal-screen');
+    const terminalInput = document.getElementById('terminal-input');
+
+    const terminalCommands = {
+      about: {
+        title: 'SOBRE MÍ',
+        lines: [
+          ['normal', 'Soy estudiante de Ingeniería Informática enfocado en desarrollo Front-End.'],
+          ['normal', 'Creo experiencias digitales atractivas y busco soluciones prácticas para cada proyecto.'],
+          ['success', '→ Enfoque: diseño + desarrollo + experiencia de usuario']
+        ]
+      },
+      projects: {
+        title: 'PROYECTOS',
+        lines: [
+          ['normal', 'Selecciona un proyecto para abrirlo en una nueva pestaña.']
+        ],
+        projects: true
+      },
+      services: {
+        title: 'SERVICIOS',
+        lines: [
+          ['normal', '→ Desarrollo de páginas web'],
+          ['normal', '→ Sistemas personalizados para empresas'],
+          ['normal', '→ Automatizaciones e integraciones'],
+          ['normal', '→ Soluciones digitales con IA']
+        ]
+      },
+      skills: {
+        title: 'SKILLS',
+        lines: [
+          ['normal', 'HTML5   ·   CSS3   ·   JavaScript'],
+          ['normal', 'ReactJS ·   Vite   ·   Tailwind CSS · Bootstrap'],
+          ['success', '→ Stack orientado a interfaces modernas y responsivas']
+        ]
+      },
+      contact: {
+        title: 'CONTACTO',
+        lines: [
+          ['normal', '¿Tienes un proyecto en mente? Podemos hablar.'],
+          ['success', '→ Desplázate a la sección de contacto para escribir un mensaje.']
+        ]
+      },
+      help: {
+        title: 'COMANDOS DISPONIBLES',
+        lines: [
+          ['normal', 'about      — Conoce mi perfil'],
+          ['normal', 'projects   — Explora mis proyectos'],
+          ['normal', 'services   — Mira lo que desarrollo'],
+          ['normal', 'skills     — Tecnologías que utilizo'],
+          ['normal', 'contact    — Cómo contactarme'],
+          ['normal', 'clear      — Limpia la terminal'],
+          ['muted', 'También puedes tocar cualquiera de los botones de arriba.']
+        ]
+      }
+    };
+
+    function appendTerminalLine(text, type='normal') {
+      const div = document.createElement('div');
+      div.className = 'term-line ' + type;
+      div.textContent = text;
+      terminalScreen.appendChild(div);
+      terminalScreen.scrollTop = terminalScreen.scrollHeight;
+      return div;
+    }
+
+    function appendProjectLine(index, project) {
+      const row = document.createElement('div');
+      row.className = 'term-project';
+      row.innerHTML = `<span>${String(index + 1).padStart(2,'0')}  ${project.title}</span><span>open ↗</span>`;
+      row.addEventListener('click', () => window.open(project.link, '_blank', 'noopener,noreferrer'));
+      terminalScreen.appendChild(row);
+    }
+
+    function typeTerminalText(text, type='normal', speed=10) {
+      const div = document.createElement('div');
+      div.className = 'term-line ' + type;
+      terminalScreen.appendChild(div);
+      let i = 0;
+      const tick = () => {
+        div.textContent = text.slice(0, i++);
+        terminalScreen.scrollTop = terminalScreen.scrollHeight;
+        if (i <= text.length) requestAnimationFrame(tick);
+      };
+      tick();
+    }
+
+    function runTerminal(command) {
+      command = String(command).trim().toLowerCase();
+      if (!command) return;
+      if (command === 'clear') {
+        terminalScreen.innerHTML = '';
+        appendTerminalLine('Terminal limpia. Escribe help para comenzar.', 'muted');
+        return;
+      }
+      const data = terminalCommands[command];
+      appendTerminalLine(`arenas@portfolio:~$ ${command}`, 'cmd');
+      if (!data) {
+        appendTerminalLine(`Comando no reconocido: ${command}`, 'muted');
+        appendTerminalLine('Escribe help o utiliza los botones para explorar.', 'normal');
+        return;
+      }
+      appendTerminalLine(`— ${data.title}`, 'success');
+      data.lines.forEach(([type, text], i) => setTimeout(() => appendTerminalLine(text, type), 90 + i * 80));
+      if (data.projects) {
+        setTimeout(() => projects.forEach((p, i) => appendProjectLine(i, p)), 220);
+      }
+    }
+
+    if (terminalInput) {
+      terminalInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const value = terminalInput.value;
+          terminalInput.value = '';
+          runTerminal(value);
+        }
+      });
+    }
+
+    // Initial message: the user immediately sees how to interact.
+    appendTerminalLine('arenas@portfolio:~$ welcome', 'cmd');
+    appendTerminalLine('Bienvenido. Explora la terminal usando los botones o escribiendo un comando.', 'normal');
+    appendTerminalLine('Escribe help para ver todas las opciones disponibles.', 'muted');
 
     // INITIAL RENDER
     renderProjects();
