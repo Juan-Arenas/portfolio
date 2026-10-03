@@ -3,63 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arenas — Desarrollo Web, E-commerce & Soluciones Digitales</title>
-  <meta name="description" content="Portafolio de Arenas — Digital Creative Studio. Creación de sitios web, e-commerce, sistemas a medida y soluciones digitales combinando diseño, tecnología e inteligencia artificial.">
+  <title>ARENAS® — Digital Creative Studio | Web Design, E-commerce & Creative Development</title>
+  <meta name="description" content="ARENAS® — Digital Creative Studio. Creo experiencias digitales de alto impacto, tiendas online y sistemas web que combinan estética, tecnología e inteligencia artificial.">
   <meta name="theme-color" content="#050505">
 
   <!-- Open Graph / Meta Social -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Arenas — Digital Creative Studio">
-  <meta property="og:description" content="Creo experiencias digitales que se hacen notar. Desarrollo web de alto nivel, e-commerce y soluciones digitales profesionales.">
+  <meta property="og:title" content="ARENAS® — Digital Creative Studio">
+  <meta property="og:description" content="Creo experiencias digitales que se hacen notar. Showroom de proyectos y desarrollo creativo.">
   <meta property="og:image" content="Logo.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="Logo.png">
   <link rel="apple-touch-icon" href="Logo.png">
 
-  <!-- Preconnect Fonts -->
+  <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- High-Performance Ambient Background (Zero CPU overhead) -->
+  <!-- High-Performance Static Ambient Background (Zero CPU/GPU Lag) -->
   <div class="ambient-background" aria-hidden="true"></div>
 
+  <!-- Background Music Audio Source -->
+  <audio id="bgMusic" src="Music.mp3" loop preload="none"></audio>
+
   <!-- ==========================================================================
-       HEADER & NAVIGATION
+       HEADER & NAVIGATION (CLEAN, MINIMAL, STICKY)
        ========================================================================== -->
   <header class="site-header" id="siteHeader">
     <div class="container header-container">
-      <a href="#inicio" class="brand-logo" aria-label="Ir al inicio de Arenas">
-        <span class="brand-name">ARENAS<sup style="font-size:0.6em;color:var(--blue-violet)">®</sup></span>
-        <span class="brand-badge">STUDIO</span>
+      <a href="#inicio" class="brand-link" aria-label="Ir al inicio de ARENAS®">
+        <span class="brand-logo-text">ARENAS®</span>
+        <span class="brand-micro-tag">DIGITAL CREATIVE STUDIO</span>
       </a>
 
+      <!-- Desktop Navigation Menu -->
       <nav aria-label="Navegación principal">
-        <ul class="nav-menu">
-          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-          <li><a href="#servicios" class="nav-link">Servicios</a></li>
-          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <ul class="nav-links">
+          <li><a href="#inicio" class="nav-item active">INICIO</a></li>
+          <li><a href="#proyectos" class="nav-item">PROYECTOS</a></li>
+          <li><a href="#lo-que-hago" class="nav-item">SERVICIOS</a></li>
+          <li><a href="#sobre-mi" class="nav-item">SOBRE MÍ</a></li>
+          <li><a href="#contacto" class="nav-item">CONTACTO</a></li>
         </ul>
       </nav>
 
-      <div class="header-actions">
-        <a href="#contacto" class="btn btn-primary header-btn btn-glow">
-          <span>Hablemos</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Header CTA & Mobile Hamburger -->
+      <div style="display:flex;align-items:center;gap:1.25rem;">
+        <a href="#contacto" class="btn btn-primary header-cta-btn">
+          <span>HABLEMOS</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line>
             <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </a>
 
-        <!-- Mobile Menu Hamburger Button -->
-        <button class="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <button class="mobile-toggle-btn" id="mobileToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -69,548 +74,398 @@
   </header>
 
   <!-- Fullscreen Mobile Navigation Menu -->
-  <div class="mobile-menu-overlay" aria-hidden="true">
-    <ul class="mobile-menu-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+  <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu-items">
+      <li><a href="#inicio">INICIO</a></li>
+      <li><a href="#proyectos">PROYECTOS</a></li>
+      <li><a href="#lo-que-hago">SERVICIOS</a></li>
+      <li><a href="#sobre-mi">SOBRE MÍ</a></li>
+      <li><a href="#contacto">CONTACTO</a></li>
     </ul>
-    <a href="#contacto" class="btn btn-primary btn-glow" style="font-size:1.1rem;padding:1.1rem 2.4rem;">
+    <a href="#contacto" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.2rem;">
       <span>HABLEMOS DE TU PROYECTO ↗</span>
     </a>
   </div>
 
+  <!-- ==========================================================================
+       SUBHEADER INFINITE MARQUEE (ELEGANT EDITORIAL STRIP)
+       ========================================================================== -->
+  <div class="editorial-marquee" aria-hidden="true">
+    <div class="marquee-inner">
+      <div class="marquee-text-group">
+        <span>WEB DESIGN <i>✦</i></span>
+        <span>E-COMMERCE <i>✦</i></span>
+        <span>SISTEMAS WEB <i>✦</i></span>
+        <span>IA & AUTOMATIZACIÓN <i>✦</i></span>
+        <span>CREATIVE DEVELOPMENT <i>✦</i></span>
+        <span>EXPERIENCIAS DIGITALES <i>✦</i></span>
+      </div>
+      <div class="marquee-text-group">
+        <span>WEB DESIGN <i>✦</i></span>
+        <span>E-COMMERCE <i>✦</i></span>
+        <span>SISTEMAS WEB <i>✦</i></span>
+        <span>IA & AUTOMATIZACIÓN <i>✦</i></span>
+        <span>CREATIVE DEVELOPMENT <i>✦</i></span>
+        <span>EXPERIENCIAS DIGITALES <i>✦</i></span>
+      </div>
+    </div>
+  </div>
+
   <main>
     <!-- ==========================================================================
-         HERO SECTION
+         HERO SECTION (MAGAZINE COVER & FLAGSHIP CAMPAIGN)
          ========================================================================== -->
     <section id="inicio" class="hero-section">
       <div class="container">
-        <div class="hero-grid">
-          
-          <!-- Editorial Text Content -->
-          <div class="hero-content reveal-fade">
-            <div class="hero-kicker">
-              <span class="hero-kicker-dot"></span>
-              <span>ARENAS® — DIGITAL CREATIVE STUDIO</span>
-            </div>
+        
+        <!-- Hero Meta Bar -->
+        <div class="hero-meta-bar reveal-fade">
+          <span>ARENAS® — DIGITAL CREATIVE STUDIO</span>
+          <div class="hero-status-tag">
+            <span class="status-live-dot"></span>
+            <span>DISPONIBLE PARA PROYECTOS 2026</span>
+          </div>
+        </div>
 
-            <h1 class="hero-headline">
-              CREO EXPERIENCIAS DIGITALES QUE <span class="gradient-accent">SE HACEN NOTAR.</span>
-            </h1>
+        <!-- Giant Headline -->
+        <h1 class="hero-headline reveal-fade reveal-delay-1">
+          CREO EXPERIENCIAS DIGITALES QUE <span class="gradient-accent">SE HACEN NOTAR.</span>
+        </h1>
 
-            <p class="hero-subtext">
-              Desarrollo sitios web, tiendas online, aplicaciones y soluciones digitales combinando diseño, tecnología e inteligencia artificial.
-            </p>
+        <!-- Editorial Subrow -->
+        <div class="hero-subrow reveal-fade reveal-delay-2">
+          <p class="hero-lead-text">
+            Diseño y desarrollo experiencias digitales, tiendas online y sistemas web que combinan estética, tecnología e inteligencia artificial.
+          </p>
 
-            <div class="hero-actions">
-              <a href="#proyectos" class="btn btn-primary btn-glow">
-                <span>VER PROYECTOS</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <polyline points="19 12 12 19 5 12"></polyline>
-                </svg>
-              </a>
-              <a href="#contacto" class="btn btn-secondary">
-                <span>HABLEMOS ↗</span>
-              </a>
-            </div>
-
-            <a href="#proyectos" class="scroll-indicator">
-              <span>SCROLL TO EXPLORE</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <div class="hero-actions-group">
+            <a href="#proyectos" class="btn btn-primary">
+              <span>VER PROYECTOS</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <polyline points="19 12 12 19 5 12"></polyline>
               </svg>
             </a>
+            <a href="#contacto" class="btn btn-secondary">
+              <span>HABLEMOS ↗</span>
+            </a>
           </div>
+        </div>
 
-          <!-- Floating Project Mockups Showcase -->
-          <div class="hero-visual reveal-fade reveal-delay-2" aria-hidden="true">
-            <div class="showcase-stage">
-              
-              <!-- Floating Card 1: Main (Álvarez Perfumería) -->
-              <div class="mockup-window mockup-1">
-                <div class="mockup-header">
-                  <div class="mockup-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div class="mockup-url">alvarezperfumeria.netlify.app</div>
-                </div>
-                <div class="mockup-content">
-                  <img src="AlvarezPerfumeria.jpeg" alt="Álvarez Perfumería Preview" loading="eager">
-                </div>
-              </div>
-
-              <!-- Floating Card 2: Secondary Top (VehiGrúas) -->
-              <div class="mockup-window mockup-2">
-                <div class="mockup-header">
-                  <div class="mockup-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div class="mockup-url">vehigruas.netlify.app</div>
-                </div>
-                <div class="mockup-content">
-                  <img src="Vehigruas.jpeg" alt="VehiGrúas Preview" loading="lazy">
-                </div>
-              </div>
-
-              <!-- Floating Card 3: Tertiary Bottom (Jean Design IA) -->
-              <div class="mockup-window mockup-3">
-                <div class="mockup-header">
-                  <div class="mockup-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div class="mockup-url">jeandesignia.com</div>
-                </div>
-                <div class="mockup-content">
-                  <img src="JeanDesign.jpeg" alt="Jean Design IA Preview" loading="lazy">
-                </div>
-              </div>
-
-              <!-- Floating Contextual Badges -->
-              <div class="floating-pill pill-1">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#27C93F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>SEO #1 Google Search</span>
-              </div>
-              <div class="floating-pill pill-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5B5CFF" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                <span>Lighthouse 98/100</span>
-              </div>
-
+        <!-- Flagship Hero Project Banner (Showroom Star Presentation) -->
+        <a href="https://alvarezperfumeria.netlify.app" target="_blank" rel="noopener noreferrer" class="flagship-banner reveal-fade reveal-delay-2" aria-label="Ver proyecto destacado Álvarez Perfumería">
+          <div class="flagship-media-wrapper">
+            <img src="AlvarezPerfumeria.jpeg" alt="Álvarez Perfumería E-Commerce Showroom Mockup" loading="eager">
+            <div class="flagship-overlay"></div>
+          </div>
+          <div class="flagship-content-bar">
+            <div>
+              <div class="flagship-kicker">PROYECTO DESTACADO ✦ SHOWROOM FLAGSHIP</div>
+              <h2 class="flagship-title">ALVAREZ PERFUMERÍA</h2>
+              <p style="font-size:0.95rem;color:var(--text-muted);margin-top:0.4rem;">E-COMMERCE / CATÁLOGO DIGITAL / LUXURY BRANDING</p>
+            </div>
+            <div>
+              <span class="flagship-cta-pill">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
             </div>
           </div>
+        </a>
 
-        </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         INFINITE MARQUEE STRIP
+         SHOWROOM SECTION: PROJECTS PRESENTED LIKE LUXURY PRODUCTS
+         Varied compositions: horizontal, portrait, cinematic & standard
          ========================================================================== -->
-    <div class="ticker-strip" aria-hidden="true">
-      <div class="ticker-track">
-        <div class="ticker-item">
-          <span>WEB DESIGN <i class="ticker-star">✦</i></span>
-          <span>E-COMMERCE <i class="ticker-star">✦</i></span>
-          <span>SISTEMAS WEB <i class="ticker-star">✦</i></span>
-          <span>IA & AUTOMATIZACIÓN <i class="ticker-star">✦</i></span>
-          <span>HIGH PERFORMANCE <i class="ticker-star">✦</i></span>
-          <span>CREATIVE CODING <i class="ticker-star">✦</i></span>
-          <span>EXPERIENCIAS DIGITALES <i class="ticker-star">✦</i></span>
-        </div>
-        <div class="ticker-item">
-          <span>WEB DESIGN <i class="ticker-star">✦</i></span>
-          <span>E-COMMERCE <i class="ticker-star">✦</i></span>
-          <span>SISTEMAS WEB <i class="ticker-star">✦</i></span>
-          <span>IA & AUTOMATIZACIÓN <i class="ticker-star">✦</i></span>
-          <span>HIGH PERFORMANCE <i class="ticker-star">✦</i></span>
-          <span>CREATIVE CODING <i class="ticker-star">✦</i></span>
-          <span>EXPERIENCIAS DIGITALES <i class="ticker-star">✦</i></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==========================================================================
-         SELECTED PROJECTS SECTION
-         ========================================================================== -->
-    <section id="proyectos" class="projects-section">
+    <section id="proyectos" class="showroom-section">
       <div class="container">
         
-        <div class="section-header reveal-fade">
-          <div class="section-tag">PORTAFOLIO DE TRABAJOS</div>
-          <h2 class="section-title">PROYECTOS SELECCIONADOS</h2>
-          <p class="section-desc">Una selección de experiencias digitales que he diseñado y desarrollado.</p>
+        <!-- Signature Section Index Identifier -->
+        <div class="section-index-bar reveal-fade">
+          <span>01 / SELECTED WORK</span>
+          <span>SHOWROOM DIGITAL DE PROYECTOS</span>
+          <span>ARENAS® / 2026</span>
         </div>
 
-        <!-- Category Filter Tabs -->
-        <div class="projects-filter-bar reveal-fade">
+        <div class="reveal-fade" style="margin-bottom:2.5rem;">
+          <div class="section-tag-pill">PORTAFOLIO COMERCIAL</div>
+          <h2 class="editorial-title">PROYECTOS SELECCIONADOS</h2>
+          <p class="editorial-sub">
+            Cada proyecto es presentado como una pieza única. Una muestra visual de plataformas reales, tiendas y herramientas digitales.
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="showroom-filter-bar reveal-fade">
           <button class="filter-btn active" data-filter="all">
-            <span>Todos los Proyectos</span>
+            <span>TODOS</span>
             <span class="filter-count">8</span>
           </button>
           <button class="filter-btn" data-filter="ecommerce">
-            <span>E-Commerce & Catálogos</span>
+            <span>E-COMMERCE</span>
             <span class="filter-count">2</span>
           </button>
-          <button class="filter-btn" data-filter="landings">
-            <span>Landings & Negocios</span>
+          <button class="filter-btn" data-filter="web">
+            <span>WEB DESIGN</span>
             <span class="filter-count">3</span>
           </button>
-          <button class="filter-btn" data-filter="platforms">
-            <span>Plataformas & Portafolios</span>
-            <span class="filter-count">3</span>
+          <button class="filter-btn" data-filter="systems">
+            <span>SISTEMAS</span>
+            <span class="filter-count">2</span>
+          </button>
+          <button class="filter-btn" data-filter="ai">
+            <span>IA</span>
+            <span class="filter-count">1</span>
           </button>
         </div>
 
-        <!-- Moderate & Organized Projects Grid -->
-        <div class="projects-grid">
+        <!-- Editorial Showroom Collection with Varied Layouts -->
+        <div class="showroom-collection">
 
-          <!-- PROJECT 01: Álvarez Perfumería -->
-          <article class="project-card reveal-fade" data-category="ecommerce">
-            <div class="project-media">
-              <span class="project-badge-top">E-Commerce · Perfumes</span>
-              <span class="project-num-badge">01</span>
-              <img src="AlvarezPerfumeria.jpeg" alt="Álvarez Perfumería — E-Commerce" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Álvarez Perfumería</h3>
-                <span class="project-role-badge">Tienda Online con Catálogo Dinámico</span>
-                <p class="project-desc">
-                  Plataforma de comercio electrónico para perfumería de alta gama con catálogo de fragancias, navegación fluida y optimización para captación de clientes y ventas directas.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Catálogo Interactivo · Conversión Directa</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">HTML5</span>
-                  <span class="tech-tag">CSS3</span>
-                  <span class="tech-tag">JavaScript</span>
-                  <span class="tech-tag">UI/UX Design</span>
+          <!-- Row 1: Two Column Composition (Portrait & Standard) -->
+          <div class="showroom-row-two-col">
+
+            <!-- 01: ATENEAS LUXURY (E-Commerce / Branding) -->
+            <article class="showroom-item reveal-fade" data-category="ecommerce">
+              <div class="showroom-media media-portrait">
+                <span class="showroom-badge-tag">E-COMMERCE / BRANDING</span>
+                <span class="showroom-num-badge">01</span>
+                <img src="AteneasLuxury.jpeg" alt="Ateneas Luxury Branding y Tienda Online" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
                 </div>
               </div>
-              <a href="https://alvarezperfumeria.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- PROJECT 02: Ateneas Luxury -->
-          <article class="project-card reveal-fade reveal-delay-1" data-category="platforms">
-            <div class="project-media">
-              <span class="project-badge-top">Luxury Branding · Web</span>
-              <span class="project-num-badge">02</span>
-              <img src="AteneasLuxury.jpeg" alt="Ateneas Luxury — Sitio Web de Lujo" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Ateneas Luxury</h3>
-                <span class="project-role-badge">Plataforma Web Exclusiva con Dominio Privado</span>
-                <p class="project-desc">
-                  Sitio web de alto impacto con dominio privado, paleta sofisticada y una experiencia premium orientada a proyectar exclusividad, solidez y confianza internacional.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Dominio Privado · Experiencia Premium</strong>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">ATENEAS LUXURY</h3>
+                    <span class="showroom-category">E-COMMERCE</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Experiencia visual de lujo para marca de alta gama. Diseño editorial enfocado en elevar la percepción de valor y conversión directa.
+                  </p>
                 </div>
-                <div class="project-techs">
-                  <span class="tech-tag">ReactJS</span>
-                  <span class="tech-tag">Tailwind CSS</span>
-                  <span class="tech-tag">Vite</span>
-                  <span class="tech-tag">Performance</span>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Luxury Branding</span>
+                    <span class="showroom-tag-pill">UI/UX</span>
+                  </div>
+                  <a href="https://ateneas-luxury.com" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                    <span>EXPLORAR</span> ↗
+                  </a>
                 </div>
               </div>
-              <a href="https://ateneas-luxury.com" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
+            </article>
 
-          <!-- PROJECT 03: VehiGrúas -->
-          <article class="project-card reveal-fade reveal-delay-2" data-category="landings">
-            <div class="project-media">
-              <span class="project-badge-top">Landing Page · Conversión</span>
-              <span class="project-num-badge">03</span>
-              <img src="Vehigruas.jpeg" alt="VehiGrúas — Plataforma de Asistencia" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">VehiGrúas</h3>
-                <span class="project-role-badge">Servicio de Asistencia Vehicular Urgente</span>
-                <p class="project-desc">
-                  Plataforma de alta velocidad diseñada para generar llamadas inmediatas y posicionarse en los primeros resultados de búsqueda local de Google.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Ranking #1 SEO Local · Lighthouse 98</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">SEO Local</span>
-                  <span class="tech-tag">Call-to-Action</span>
-                  <span class="tech-tag">Mobile-First</span>
-                  <span class="tech-tag">CRO</span>
+            <!-- 02: VEHIGRUAS (Web App / Sistema de Asistencia) -->
+            <article class="showroom-item reveal-fade reveal-delay-1" data-category="systems">
+              <div class="showroom-media media-portrait">
+                <span class="showroom-badge-tag">WEB APP / ASISTENCIA</span>
+                <span class="showroom-num-badge">02</span>
+                <img src="Vehigruas.jpeg" alt="VehiGrúas Plataforma Web de Asistencia y Servicios" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
                 </div>
               </div>
-              <a href="https://vehigruas.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- PROJECT 04: Jean Design IA -->
-          <article class="project-card reveal-fade" data-category="platforms">
-            <div class="project-media">
-              <span class="project-badge-top">Innovación · Soluciones Web</span>
-              <span class="project-num-badge">04</span>
-              <img src="JeanDesign.jpeg" alt="Jean Design IA — Plataforma Web" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Jean Design IA</h3>
-                <span class="project-role-badge">Solución Digital Dinámica con Dominio Privado</span>
-                <p class="project-desc">
-                  Plataforma web dinámica con dominio privado, diseño de vanguardia y arquitectura interactiva pensada para soluciones digitales e inteligencia artificial.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Dominio Privado · Arquitectura Dinámica</strong>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">VEHIGRUAS</h3>
+                    <span class="showroom-category">SISTEMA WEB</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Plataforma web comercial y operativa de asistencia vehicular 24/7. Interfaz ágil para contacto y cotización inmediata en carretera.
+                  </p>
                 </div>
-                <div class="project-techs">
-                  <span class="tech-tag">Dominio Privado</span>
-                  <span class="tech-tag">JavaScript</span>
-                  <span class="tech-tag">IA Integration</span>
-                  <span class="tech-tag">Responsive</span>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Sistemas Web</span>
+                    <span class="showroom-tag-pill">Conversión</span>
+                  </div>
+                  <a href="https://vehigruas.netlify.app" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                    <span>EXPLORAR</span> ↗
+                  </a>
                 </div>
               </div>
-              <a href="https://jeandesignia.com" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
+            </article>
 
-          <!-- PROJECT 05: Brylica Joyería -->
-          <article class="project-card reveal-fade reveal-delay-1" data-category="ecommerce">
-            <div class="project-media">
-              <span class="project-badge-top">E-Commerce · Catálogo</span>
-              <span class="project-num-badge">05</span>
-              <img src="brylicajoyerai.jpeg" alt="Brylica Joyería — Catálogo" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Brylica Joyería</h3>
-                <span class="project-role-badge">Catálogo de Joyas y Accesorios de Autor</span>
-                <p class="project-desc">
-                  Tienda online de joyería fina con catálogo visual interactivo, cuidada presentación de piezas y diseño minimalista que eleva el valor percibido de la marca.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Catálogo Visual · Experiencia de Marca</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">Catálogo Online</span>
-                  <span class="tech-tag">Diseño Minimalista</span>
-                  <span class="tech-tag">E-Commerce</span>
-                </div>
-              </div>
-              <a href="https://brylicajoyeria.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- PROJECT 06: Valen Makeup -->
-          <article class="project-card reveal-fade reveal-delay-2" data-category="landings">
-            <div class="project-media">
-              <span class="project-badge-top">Belleza · Portafolio & Citas</span>
-              <span class="project-num-badge">06</span>
-              <img src="valenmakeup.jpeg" alt="Valen Makeup — Belleza y Citas" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Valen Makeup</h3>
-                <span class="project-role-badge">Sitio Web para Estudio de Maquillaje</span>
-                <p class="project-desc">
-                  Sitio web editorial de belleza y maquillaje profesional, con enfoque en reservas de citas, portafolio estético y presentación de servicios exclusivos.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Diseño Editorial · Captación de Citas</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">Diseño Editorial</span>
-                  <span class="tech-tag">Reservas Web</span>
-                  <span class="tech-tag">Mobile First</span>
-                </div>
-              </div>
-              <a href="#contacto" class="project-action-btn">
-                <span>VER DETALLES</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- PROJECT 07: Joss Design -->
-          <article class="project-card reveal-fade" data-category="platforms">
-            <div class="project-media">
-              <span class="project-badge-top">Portafolio · Diseño</span>
-              <span class="project-num-badge">07</span>
-              <img src="jossdesign.jpeg" alt="Joss Design — Portafolio Creativo" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Joss Design</h3>
-                <span class="project-role-badge">Portafolio Creativo de Identidad Visual</span>
-                <p class="project-desc">
-                  Portafolio interactivo de diseño visual con micro-animaciones fluidas, galería de proyectos creativos y presentación moderna de identidad de marca.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Micro-animaciones · Presentación Visual</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">Portafolio</span>
-                  <span class="tech-tag">Micro-animaciones</span>
-                  <span class="tech-tag">JavaScript</span>
-                </div>
-              </div>
-              <a href="https://jossdesign.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- PROJECT 08: Palo Verde Esmeralda -->
-          <article class="project-card reveal-fade reveal-delay-1" data-category="landings">
-            <div class="project-media">
-              <span class="project-badge-top">Sitio Corporativo · Empresa</span>
-              <span class="project-num-badge">08</span>
-              <img src="Posicionados1.jpeg" alt="Palo Verde Esmeralda — Sitio Web Empresarial" loading="lazy">
-            </div>
-            <div class="project-content">
-              <div>
-                <h3 class="project-title">Palo Verde Esmeralda</h3>
-                <span class="project-role-badge">Presencia Web Empresarial Sólida</span>
-                <p class="project-desc">
-                  Sitio web corporativo con identidad visual sólida, diseño responsivo y arquitectura clara para comunicación empresarial y captación de clientes.
-                </p>
-                <div class="project-spec-row">
-                  <span>Enfoque:</span> <strong>Identidad Corporativa · Responsive Core</strong>
-                </div>
-                <div class="project-techs">
-                  <span class="tech-tag">HTML5</span>
-                  <span class="tech-tag">CSS3</span>
-                  <span class="tech-tag">Responsive</span>
-                  <span class="tech-tag">Branding</span>
-                </div>
-              </div>
-              <a href="https://paloverde-esmeralda.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
-                <span>VER PROYECTO</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-              </a>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SERVICES SECTION
-         ========================================================================== -->
-    <section id="servicios" class="services-section">
-      <div class="container">
-        
-        <div class="section-header reveal-fade">
-          <div class="section-tag">CAPACIDADES TÉCNICAS Y VISUALES</div>
-          <h2 class="section-title">LO QUE PUEDO CREAR</h2>
-          <p class="section-desc">Soluciones digitales pensadas para negocios, marcas y proyectos que quieren crecer.</p>
-        </div>
-
-        <div class="services-grid">
-          
-          <!-- Service 01 -->
-          <div class="service-card reveal-fade">
-            <div>
-              <div class="service-header">
-                <span class="service-num">01</span>
-                <div class="service-icon-box">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="service-title">WEB DESIGN</h3>
-              <p class="service-desc">
-                Diseño de experiencias web modernas, visuales y adaptadas a la identidad de cada marca. Enfoque editorial, tipografía cuidada y estética memorable.
-              </p>
-            </div>
-            <ul class="service-features">
-              <li>Landings de alta conversión</li>
-              <li>Sitios corporativos y portafolios</li>
-              <li>Arquitectura de diseño responsive</li>
-            </ul>
           </div>
 
-          <!-- Service 02 -->
-          <div class="service-card reveal-fade reveal-delay-1">
-            <div>
-              <div class="service-header">
-                <span class="service-num">02</span>
-                <div class="service-icon-box">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
+          <!-- Row 2: Cinematic Full-Width Feature (Jean Design IA) -->
+          <article class="showroom-item reveal-fade" data-category="ai">
+            <div class="showroom-media media-cinematic">
+              <span class="showroom-badge-tag">AI & CREATIVE TECH</span>
+              <span class="showroom-num-badge">03</span>
+              <img src="JeanDesign.jpeg" alt="Jean Design IA Plataforma de Diseño e Inteligencia Artificial" loading="lazy">
+              <div class="showroom-hover-reveal">
+                <span class="showroom-hover-btn">VIEW PROJECT →</span>
+              </div>
+            </div>
+            <div class="showroom-info">
+              <div>
+                <div class="showroom-title-row">
+                  <h3 class="showroom-title">JEAN DESIGN IA</h3>
+                  <span class="showroom-category">IA & INNOVACIÓN</span>
+                </div>
+                <p class="showroom-desc">
+                  Plataforma vanguardista para estudio creativo impulsado por inteligencia artificial. Una experiencia inmersiva con estética futurista de alto impacto visual.
+                </p>
+              </div>
+              <div class="showroom-footer-bar">
+                <div class="showroom-tags-list">
+                  <span class="showroom-tag-pill">Artificial Intelligence</span>
+                  <span class="showroom-tag-pill">Creative Studio</span>
+                  <span class="showroom-tag-pill">Dark Mode</span>
+                </div>
+                <a href="https://jeandesignia.com" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                  <span>EXPLORAR</span> ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Row 3: Two Column Composition (Brylica Joyería & Valen Makeup) -->
+          <div class="showroom-row-two-col">
+
+            <!-- 04: BRYLICA JOYERÍA (E-Commerce / Joyería) -->
+            <article class="showroom-item reveal-fade" data-category="ecommerce">
+              <div class="showroom-media media-standard">
+                <span class="showroom-badge-tag">E-COMMERCE / JOYERÍA</span>
+                <span class="showroom-num-badge">04</span>
+                <img src="brylicajoyerai.jpeg" alt="Brylica Joyería Catálogo Digital y E-Commerce" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
                 </div>
               </div>
-              <h3 class="service-title">E-COMMERCE</h3>
-              <p class="service-desc">
-                Tiendas online, catálogos interactivos y experiencias de compra ágiles, optimizadas para transformar visitantes en clientes fieles.
-              </p>
-            </div>
-            <ul class="service-features">
-              <li>Catálogos rápidos y elegantes</li>
-              <li>Integración de pagos y pedidos</li>
-              <li>Optimización para ventas móviles</li>
-            </ul>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">BRYLICA JOYERÍA</h3>
+                    <span class="showroom-category">E-COMMERCE</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Catálogo digital de joyería fina. Navegación fluida por colecciones, fotografía de producto protagonista y compras directas por WhatsApp.
+                  </p>
+                </div>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Catálogo</span>
+                    <span class="showroom-tag-pill">WhatsApp Checkout</span>
+                  </div>
+                  <a href="https://brylicajoyeria.netlify.app" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                    <span>EXPLORAR</span> ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 05: VALEN MAKEUP (Web / Belleza & Citas) -->
+            <article class="showroom-item reveal-fade reveal-delay-1" data-category="web">
+              <div class="showroom-media media-standard">
+                <span class="showroom-badge-tag">WEB / BELLEZA & CITAS</span>
+                <span class="showroom-num-badge">05</span>
+                <img src="valenmakeup.jpeg" alt="Valen Makeup Portafolio y Agenda de Maquillaje" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">VALEN MAKEUP</h3>
+                    <span class="showroom-category">WEB DESIGN</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Landing page estética y minimalista para maquilladora profesional. Galería visual de trabajos, detalle de servicios y sistema de reserva de citas.
+                  </p>
+                </div>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Beauty Studio</span>
+                    <span class="showroom-tag-pill">Agendamiento</span>
+                  </div>
+                  <a href="#contacto" class="showroom-link-text">
+                    <span>CONTACTAR</span> ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
           </div>
 
-          <!-- Service 03 -->
-          <div class="service-card reveal-fade reveal-delay-2">
-            <div>
-              <div class="service-header">
-                <span class="service-num">03</span>
-                <div class="service-icon-box">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
-                </div>
-              </div>
-              <h3 class="service-title">SISTEMAS WEB</h3>
-              <p class="service-desc">
-                Aplicaciones a medida, paneles administrativos, sistemas de reservas y herramientas digitales que resuelven necesidades operativas reales.
-              </p>
-            </div>
-            <ul class="service-features">
-              <li>Paneles de control y dashboards</li>
-              <li>Sistemas de agenda y cotización</li>
-              <li>Bases de datos y APIs robustas</li>
-            </ul>
-          </div>
+          <!-- Row 4: Two Column Composition (Joss Design & Palo Verde Esmeralda) -->
+          <div class="showroom-row-two-col">
 
-          <!-- Service 04 -->
-          <div class="service-card reveal-fade reveal-delay-3">
-            <div>
-              <div class="service-header">
-                <span class="service-num">04</span>
-                <div class="service-icon-box">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2a4 4 0 0 0-4 4v2a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"></path>
-                    <path d="M18 12a6 6 0 0 1-12 0"></path>
-                    <line x1="12" y1="18" x2="12" y2="22"></line>
-                    <line x1="8" y1="22" x2="16" y2="22"></line>
-                  </svg>
+            <!-- 06: JOSS DESIGN (Portafolio Creativo) -->
+            <article class="showroom-item reveal-fade" data-category="web">
+              <div class="showroom-media media-standard">
+                <span class="showroom-badge-tag">CREATIVE PORTFOLIO</span>
+                <span class="showroom-num-badge">06</span>
+                <img src="jossdesign.jpeg" alt="Joss Design Portafolio Creativo" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
                 </div>
               </div>
-              <h3 class="service-title">IA & AUTOMATIZACIÓN</h3>
-              <p class="service-desc">
-                Automatización de flujos de trabajo repetitivos e integración de modelos de inteligencia artificial para acelerar procesos y potenciar el negocio.
-              </p>
-            </div>
-            <ul class="service-features">
-              <li>Automatización de respuestas y leads</li>
-              <li>Herramientas inteligentes asistidas</li>
-              <li>Procesamiento y optimización de datos</li>
-            </ul>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">JOSS DESIGN</h3>
+                    <span class="showroom-category">WEB DESIGN</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Portafolio personal de diseño gráfico e identidad visual. Layout moderno, contrastes fuertes y navegación rápida orientada a captar clientes de marca.
+                  </p>
+                </div>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Diseño Gráfico</span>
+                    <span class="showroom-tag-pill">Branding</span>
+                  </div>
+                  <a href="https://jossdesign.netlify.app" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                    <span>EXPLORAR</span> ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 07: PALO VERDE ESMERALDA (Web Empresarial / Esmeraldas) -->
+            <article class="showroom-item reveal-fade reveal-delay-1" data-category="systems">
+              <div class="showroom-media media-standard">
+                <span class="showroom-badge-tag">WEB EMPRESARIAL / ESMERALDAS</span>
+                <span class="showroom-num-badge">07</span>
+                <img src="Posicionados1.jpeg" alt="Palo Verde Esmeralda Plataforma Empresarial" loading="lazy">
+                <div class="showroom-hover-reveal">
+                  <span class="showroom-hover-btn">VIEW PROJECT →</span>
+                </div>
+              </div>
+              <div class="showroom-info">
+                <div>
+                  <div class="showroom-title-row">
+                    <h3 class="showroom-title">PALO VERDE ESMERALDA</h3>
+                    <span class="showroom-category">SISTEMA & WEB</span>
+                  </div>
+                  <p class="showroom-desc">
+                    Plataforma institucional para empresa de esmeraldas colombianas de exportación. Arquitectura sólida que transmite legitimidad, exclusividad y confianza internacional.
+                  </p>
+                </div>
+                <div class="showroom-footer-bar">
+                  <div class="showroom-tags-list">
+                    <span class="showroom-tag-pill">Exportación</span>
+                    <span class="showroom-tag-pill">Corporativo</span>
+                  </div>
+                  <a href="https://paloverde-esmeralda.netlify.app" target="_blank" rel="noopener noreferrer" class="showroom-link-text">
+                    <span>EXPLORAR</span> ↗
+                  </a>
+                </div>
+              </div>
+            </article>
+
           </div>
 
         </div>
@@ -619,80 +474,231 @@
     </section>
 
     <!-- ==========================================================================
-         "NO SOLO HAGO WEBS" MANIFESTO SECTION
+         EDITORIAL BREAK STATEMENT (BREAKING THE RHYTHM)
          ========================================================================== -->
-    <section class="manifesto-section">
-      <div class="container">
-        <div class="manifesto-tag reveal-fade">FILOSOFÍA DE TRABAJO</div>
-        <h2 class="manifesto-title reveal-fade">NO SOLO HAGO WEBS.</h2>
-
-        <div class="manifesto-verbs reveal-fade reveal-delay-1">
-          <span class="manifesto-verb active">CREO</span>
-          <span class="manifesto-verb">DISEÑO</span>
-          <span class="manifesto-verb">DESARROLLO</span>
-          <span class="manifesto-verb">AUTOMATIZO</span>
-        </div>
-
-        <p class="manifesto-desc reveal-fade reveal-delay-2">
-          Convierto ideas y necesidades de negocio en experiencias digitales funcionales, atractivas y rentables.
+    <section class="editorial-break-section">
+      <div class="container reveal-fade">
+        <div class="statement-tag">ARENAS® PHILOSOPHY</div>
+        <h2 class="statement-headline">
+          DIGITAL SHOULD <span class="gradient-accent">FEEL DIFFERENT.</span>
+        </h2>
+        <p class="statement-subtext">
+          No se trata solo de hacer que algo funcione. Se trata de crear algo que la gente recuerde.
         </p>
       </div>
     </section>
 
     <!-- ==========================================================================
-         ABOUT ME SECTION
+         INTERACTIVE WORD LIST: "WHAT I DO"
          ========================================================================== -->
-    <section id="sobre-mi" class="about-section">
+    <section id="lo-que-hago" class="what-i-do-section">
       <div class="container">
         
-        <div class="about-grid">
+        <div class="section-index-bar reveal-fade">
+          <span>02 / WHAT I DO</span>
+          <span>CAPACIDADES & ENFOQUE CREATIVO</span>
+          <span>ARENAS®</span>
+        </div>
+
+        <div class="reveal-fade" style="margin-bottom:3rem;">
+          <div class="section-tag-pill">DIRECCIÓN TÉCNICA Y VISUAL</div>
+          <h2 class="editorial-title">NO SOLO HAGO WEBS.</h2>
+          <p class="editorial-sub">
+            Pasa el cursor por cada disciplina para descubrir cómo transformo ideas en herramientas digitales de impacto.
+          </p>
+        </div>
+
+        <div class="interactive-words-container reveal-fade">
           
-          <!-- Photo Profile Framing -->
-          <div class="about-photo-wrapper reveal-fade">
-            <img src="Arenas.png" alt="Juan Arenas — Desarrollador Front-End & Diseñador Digital" loading="lazy">
-            <div class="about-status-badge">
-              <span class="status-dot"></span>
-              <span class="status-text">Disponible para nuevos proyectos y consultoría</span>
+          <div class="interactive-word-row">
+            <span class="word-label">WEB DESIGN</span>
+            <p class="word-desc">
+              Diseño interfaces digitales que convierten ideas en experiencias visuales de alta categoría.
+            </p>
+            <span class="word-arrow">↗</span>
+          </div>
+
+          <div class="interactive-word-row">
+            <span class="word-label">E-COMMERCE</span>
+            <p class="word-desc">
+              Tiendas online y catálogos interactivos pensados estratégicamente para vender y construir marca.
+            </p>
+            <span class="word-arrow">↗</span>
+          </div>
+
+          <div class="interactive-word-row">
+            <span class="word-label">SISTEMAS WEB</span>
+            <p class="word-desc">
+              Aplicaciones, paneles de control y herramientas digitales adaptadas con precisión a cada negocio.
+            </p>
+            <span class="word-arrow">↗</span>
+          </div>
+
+          <div class="interactive-word-row">
+            <span class="word-label">IA & AUTOMATIZACIÓN</span>
+            <p class="word-desc">
+              Soluciones inteligentes para automatizar flujos de trabajo, optimizar procesos y ahorrar tiempo real.
+            </p>
+            <span class="word-arrow">↗</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SERVICES SECTION (NUMBERED EDITORIAL BLOCKS)
+         ========================================================================== -->
+    <section class="services-editorial-section">
+      <div class="container">
+        
+        <div class="section-index-bar reveal-fade">
+          <span>03 / SERVICES</span>
+          <span>SOLUCIONES A MEDIDA</span>
+          <span>ARENAS®</span>
+        </div>
+
+        <div class="reveal-fade" style="margin-bottom:3rem;">
+          <div class="section-tag-pill">ESTRUCTURA DE SERVICIOS</div>
+          <h2 class="editorial-title">LO QUE PUEDO CREAR</h2>
+        </div>
+
+        <div class="services-numbered-grid">
+          
+          <div class="service-numbered-block reveal-fade">
+            <div class="service-big-num">01</div>
+            <div>
+              <h3 class="service-block-title">WEB DESIGN</h3>
+              <p class="service-block-desc">
+                Sitios web corporativos, landing pages de alta conversión y portafolios editoriales que cautivan desde el primer scroll.
+              </p>
             </div>
           </div>
 
-          <!-- Editorial Bio & Philosophy -->
-          <div class="about-content reveal-fade reveal-delay-1">
-            <div class="section-tag">PERFIL PROFESIONAL</div>
-            <h2 class="about-greeting">Hola, soy Arenas.</h2>
-            
-            <p class="about-text">
-              Soy estudiante de Ingeniería Informática enfocado en desarrollo Front-End y en la creación de experiencias digitales de alto impacto. Me apasiona unir la sensibilidad estética del diseño moderno con la precisión técnica de la programación.
+          <div class="service-numbered-block reveal-fade reveal-delay-1">
+            <div class="service-big-num">02</div>
+            <div>
+              <h3 class="service-block-title">E-COMMERCE</h3>
+              <p class="service-block-desc">
+                Tiendas virtuales con pasarelas de pago, catálogo dinámico, carritos interactivos y pedidos directos a WhatsApp.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-numbered-block reveal-fade reveal-delay-1">
+            <div class="service-big-num">03</div>
+            <div>
+              <h3 class="service-block-title">SISTEMAS WEB</h3>
+              <p class="service-block-desc">
+                Desarrollo a la medida de plataformas de gestión, paneles de administración, bases de datos y herramientas de asistencia.
+              </p>
+            </div>
+          </div>
+
+          <div class="service-numbered-block reveal-fade reveal-delay-2">
+            <div class="service-big-num">04</div>
+            <div>
+              <h3 class="service-block-title">IA & AUTOMATIZACIÓN</h3>
+              <p class="service-block-desc">
+                Integración de modelos de inteligencia artificial, chatbots con memoria, conexión a APIs y flujos de automatización operativa.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         "BUILT FOR REAL BUSINESSES" (ZERO FAKE DATA / AUTHENTIC SECTORS)
+         ========================================================================== -->
+    <section class="real-businesses-section">
+      <div class="container">
+        
+        <div class="businesses-row">
+          
+          <div class="reveal-fade">
+            <div class="section-tag-pill">PROYECTOS Y EXPERIENCIA REAL</div>
+            <h2 class="editorial-title" style="margin-bottom:1rem;">BUILT FOR REAL BUSINESSES.</h2>
+            <p class="editorial-sub" style="margin-bottom:1.8rem;">
+              Desarrollo de proyectos digitales adaptados a industrias y marcas concretas. Cada solución responde a las necesidades reales de su sector.
             </p>
 
-            <div class="about-quote-box">
+            <div class="businesses-tags-cloud">
+              <span class="business-sector-pill">PERFUMERÍAS</span>
+              <span class="business-sector-pill">JOYERÍAS</span>
+              <span class="business-sector-pill">NEGOCIOS LOCALES</span>
+              <span class="business-sector-pill">ASISTENCIA VEHICULAR</span>
+              <span class="business-sector-pill">BELLEZA & MAQUILLAJE</span>
+              <span class="business-sector-pill">CREADORES & ESTUDIOS</span>
+            </div>
+          </div>
+
+          <div class="businesses-counter-card reveal-fade reveal-delay-1">
+            <div class="counter-giant">08+</div>
+            <div class="counter-caption">PROYECTOS REALES PUBLICADOS</div>
+            <p class="counter-sub">Diseñados, desarrollados y en producción activa en la web.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION (REAL FACTS & STUDIO IDENTITY)
+         ========================================================================== -->
+    <section id="sobre-mi" class="about-me-section">
+      <div class="container">
+        
+        <div class="section-index-bar reveal-fade">
+          <span>04 / ABOUT</span>
+          <span>PERFIL PROFESIONAL</span>
+          <span>ARENAS®</span>
+        </div>
+
+        <div class="about-editorial-grid">
+          
+          <div class="about-portrait-box reveal-fade">
+            <img src="Arenas.png" alt="Juan Arenas — Creador de ARENAS® Digital Creative Studio" loading="lazy">
+            <div class="about-stamp-tag">
+              <span>JUAN ARENAS</span>
+              <span style="color:var(--accent-purple);">FOUNDER & DEV</span>
+            </div>
+          </div>
+
+          <div class="about-editorial-content reveal-fade reveal-delay-1">
+            <div class="section-tag-pill">DETRÁS DEL ESTUDIO</div>
+            <h2 class="editorial-title" style="margin-bottom:1rem;">HOLA, SOY ARENAS.</h2>
+            
+            <p style="font-size:1.15rem;color:var(--text-editorial);line-height:1.7;">
+              Soy estudiante de Ingeniería Informática enfocado en desarrollo Front-End y creación de experiencias digitales.
+            </p>
+
+            <p style="font-size:1.05rem;color:var(--text-muted);line-height:1.7;">
+              Combino diseño, programación e inteligencia artificial para construir proyectos funcionales y visualmente fuertes que eleven el estándar de marcas y negocios.
+            </p>
+
+            <div class="about-quote-card">
               <blockquote>
-                "Usando la IA como herramienta profesional, no como reemplazo."
+                “USO LA IA COMO HERRAMIENTA PROFESIONAL, NO COMO REEMPLAZO DE LA CREATIVIDAD.”
               </blockquote>
             </div>
 
-            <p class="about-text" style="font-size:1.05rem">
-              Mi enfoque consiste en comprender el objetivo comercial de cada cliente, diseñar interfaces fluidas que enamoren a los usuarios y construir código optimizado que cargue en milisegundos.
-            </p>
-
-            <div class="about-pillars">
-              <div class="pillar-item">
-                <div class="pillar-num">01</div>
-                <div class="pillar-title">Criterio Visual</div>
-                <div class="pillar-desc">Diseño intencional que diferencia tu marca de la competencia.</div>
-              </div>
-              <div class="pillar-item">
-                <div class="pillar-num">02</div>
-                <div class="pillar-title">Código Rápido</div>
-                <div class="pillar-desc">Estructuras limpias pensadas para máxima velocidad y SEO.</div>
-              </div>
-              <div class="pillar-item">
-                <div class="pillar-num">03</div>
-                <div class="pillar-title">Conversión Real</div>
-                <div class="pillar-desc">Orientado a generar llamadas, contactos y ventas efectivas.</div>
-              </div>
+            <div style="display:flex;gap:1rem;margin-top:0.5rem;">
+              <a href="#contacto" class="btn btn-primary">
+                <span>TRABAJEMOS JUNTOS</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://wa.me/573203184381" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <span>WHATSAPP DIRECTO ↗</span>
+              </a>
             </div>
-
           </div>
 
         </div>
@@ -701,47 +707,43 @@
     </section>
 
     <!-- ==========================================================================
-         TIMELINE / EVOLUTION SECTION
+         MI EVOLUCIÓN (CREATIVE ROADMAP)
          ========================================================================== -->
-    <section class="timeline-section">
+    <section class="evolution-section">
       <div class="container">
         
-        <div class="section-header reveal-fade" style="text-align:center;margin-bottom:3.5rem;">
-          <div class="section-tag">TRAYECTORIA & ENFOQUE</div>
-          <h2 class="section-title">EVOLUCIÓN CONSTANTE</h2>
-          <p class="section-desc" style="margin:0 auto">Un camino guiado por la curiosidad técnica, el rigor en cada entrega y la adopción de nuevas tecnologías.</p>
+        <div class="reveal-fade" style="margin-bottom:2.5rem;">
+          <div class="section-tag-pill">TRAYECTORIA</div>
+          <h2 class="editorial-title" style="font-size:clamp(1.8rem, 3.5vw, 2.8rem);">MI EVOLUCIÓN</h2>
         </div>
 
-        <div class="timeline-track reveal-fade reveal-delay-1">
-          <div class="timeline-step">
-            <div class="step-node">01</div>
-            <div class="step-title">Inicio</div>
-            <div class="step-desc">Fundamentos de computación e ingeniería informática.</div>
+        <div class="evolution-track reveal-fade">
+          <div class="evolution-node">
+            <span class="evolution-step-name">INICIO</span>
+            <span class="evolution-arrow">→</span>
           </div>
-          <div class="timeline-step">
-            <div class="step-node">02</div>
-            <div class="step-title">Aprendizaje</div>
-            <div class="step-desc">Dominio de estándares web, responsive design y UI.</div>
+          <div class="evolution-node">
+            <span class="evolution-step-name">APRENDIZAJE</span>
+            <span class="evolution-arrow">→</span>
           </div>
-          <div class="timeline-step">
-            <div class="step-node">03</div>
-            <div class="step-title">Proyectos</div>
-            <div class="step-desc">Despliegue de soluciones reales con clientes y marcas.</div>
+          <div class="evolution-node">
+            <span class="evolution-step-name">PRIMEROS PROYECTOS</span>
+            <span class="evolution-arrow">→</span>
           </div>
-          <div class="timeline-step">
-            <div class="step-node">04</div>
-            <div class="step-title">E-Commerce</div>
-            <div class="step-desc">Tiendas online, catálogos y plataformas transaccionales.</div>
+          <div class="evolution-node">
+            <span class="evolution-step-name">E-COMMERCE</span>
+            <span class="evolution-arrow">→</span>
           </div>
-          <div class="timeline-step">
-            <div class="step-node">05</div>
-            <div class="step-title">Sistemas</div>
-            <div class="step-desc">Plataformas personalizadas y herramientas a medida.</div>
+          <div class="evolution-node">
+            <span class="evolution-step-name">SISTEMAS</span>
+            <span class="evolution-arrow">→</span>
           </div>
-          <div class="timeline-step">
-            <div class="step-node">06</div>
-            <div class="step-title">IA & Futuro</div>
-            <div class="step-desc">Automatizaciones e integración de inteligencia artificial.</div>
+          <div class="evolution-node">
+            <span class="evolution-step-name">IA</span>
+            <span class="evolution-arrow">→</span>
+          </div>
+          <div class="evolution-node">
+            <span class="evolution-step-name" style="color:var(--accent-purple);">FUTURO</span>
           </div>
         </div>
 
@@ -749,101 +751,97 @@
     </section>
 
     <!-- ==========================================================================
-         TECH STACK SECTION
+         TOOLS I USE (INTERACTIVE TYPOGRAPHIC STACK)
          ========================================================================== -->
-    <section class="stack-section">
+    <section class="tools-stack-section">
       <div class="container">
         
-        <div class="section-header reveal-fade">
-          <div class="section-tag">HERRAMIENTAS & LENGUAJES</div>
-          <h2 class="section-title">STACK TECNOLÓGICO</h2>
-          <p class="section-desc">Tecnologías consolidadas y herramientas de última generación que utilizo para construir soluciones sólidas.</p>
+        <div class="section-index-bar reveal-fade">
+          <span>05 / STACK</span>
+          <span>TECNOLOGÍAS & FLUJOS</span>
+          <span>ARENAS®</span>
         </div>
 
-        <div class="stack-grid">
+        <div class="reveal-fade" style="margin-bottom:3rem;">
+          <div class="section-tag-pill">HERRAMIENTAS DE TRABAJO</div>
+          <h2 class="editorial-title">TOOLS I USE</h2>
+          <p class="editorial-sub">
+            Tecnologías y plataformas que empleo día a día para crear aplicaciones robustas, escalables y visualmente fluidas.
+          </p>
+        </div>
+
+        <div class="tools-interactive-grid">
           
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+          <div class="tool-interactive-card reveal-fade">
+            <div class="tool-header-row">
+              <span class="tool-name-text">HTML & CSS</span>
+              <span class="tool-badge-role">Core</span>
             </div>
-            <span class="stack-name">HTML5</span>
+            <p class="tool-summary-text">Estructura semántica, diseño responsive y microinteracciones fluidas.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+          <div class="tool-interactive-card reveal-fade">
+            <div class="tool-header-row">
+              <span class="tool-name-text">JAVASCRIPT</span>
+              <span class="tool-badge-role">Logic</span>
             </div>
-            <span class="stack-name">CSS3</span>
+            <p class="tool-summary-text">Lógica client-side moderna, manipulación del DOM y arquitecturas asíncronas.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+          <div class="tool-interactive-card reveal-fade">
+            <div class="tool-header-row">
+              <span class="tool-name-text">REACT</span>
+              <span class="tool-badge-role">UI Library</span>
             </div>
-            <span class="stack-name">JavaScript</span>
+            <p class="tool-summary-text">Componentes reutilizables, hooks y gestión reactiva del estado.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="ReactJS" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-1">
+            <div class="tool-header-row">
+              <span class="tool-name-text">TAILWIND CSS</span>
+              <span class="tool-badge-role">Styling</span>
             </div>
-            <span class="stack-name">ReactJS</span>
+            <p class="tool-summary-text">Diseño acelerado por utilidades y consistencia de sistemas visuales.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-1">
+            <div class="tool-header-row">
+              <span class="tool-name-text">VITE</span>
+              <span class="tool-badge-role">Build Tool</span>
             </div>
-            <span class="stack-name">Tailwind CSS</span>
+            <p class="tool-summary-text">Entornos de desarrollo instantáneos y empaquetado optimizado para producción.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-1">
+            <div class="tool-header-row">
+              <span class="tool-name-text">PYTHON</span>
+              <span class="tool-badge-role">Scripting</span>
             </div>
-            <span class="stack-name">Vite</span>
+            <p class="tool-summary-text">Automatizaciones, scripts de datos y conexión con modelos de inteligencia artificial.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-2">
+            <div class="tool-header-row">
+              <span class="tool-name-text">PHP & SQL</span>
+              <span class="tool-badge-role">Backend</span>
             </div>
-            <span class="stack-name">Python</span>
+            <p class="tool-summary-text">Bases de datos relacionales, autenticación de usuarios y lógica de servidor.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-2">
+            <div class="tool-header-row">
+              <span class="tool-name-text">GIT & GITHUB</span>
+              <span class="tool-badge-role">Control</span>
             </div>
-            <span class="stack-name">PHP</span>
+            <p class="tool-summary-text">Control de versiones, flujos de trabajo en equipo y ramas de despliegue.</p>
           </div>
 
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+          <div class="tool-interactive-card reveal-fade reveal-delay-2">
+            <div class="tool-header-row">
+              <span class="tool-name-text">AI WORKFLOWS</span>
+              <span class="tool-badge-role">Innovation</span>
             </div>
-            <span class="stack-name">SQL</span>
-          </div>
-
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy">
-            </div>
-            <span class="stack-name">Git</span>
-          </div>
-
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="#FFFFFF"><path d="m12 1 12 21H0z"/></svg>
-            </div>
-            <span class="stack-name">Vercel</span>
-          </div>
-
-          <div class="stack-card reveal-fade">
-            <div class="stack-icon">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <span class="stack-name">Inteligencia Artificial</span>
+            <p class="tool-summary-text">Modelos generativos y automatización de código para acelerar el desarrollo sin perder el toque artesanal.</p>
           </div>
 
         </div>
@@ -852,328 +850,106 @@
     </section>
 
     <!-- ==========================================================================
-         SOCIAL PROOF: METRICS, REVIEWS & EVIDENCE
+         CONTACT SECTION: "¿TIENES UNA IDEA? HAGÁMOSLA REAL."
          ========================================================================== -->
-    <section class="proof-section">
+    <section id="contacto" class="contact-hero-section">
       <div class="container">
         
-        <div class="section-header reveal-fade">
-          <div class="section-tag">VALIDACIÓN & RESULTADOS</div>
-          <h2 class="section-title">EVIDENCIA DE IMPACTO</h2>
-          <p class="section-desc">Resultados medibles y opiniones de personas que confiaron en mi trabajo.</p>
+        <div class="section-index-bar reveal-fade">
+          <span>06 / CONTACT</span>
+          <span>INICIAR UN PROYECTO</span>
+          <span>ARENAS®</span>
         </div>
 
-        <!-- Google Key Metrics -->
-        <div class="metrics-row reveal-fade">
-          <div class="metric-card">
-            <div class="metric-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-            </div>
-            <div>
-              <div class="metric-value">#1 Google Search</div>
-              <div class="metric-label">Posicionamiento SEO Local</div>
-            </div>
-          </div>
-
-          <div class="metric-card">
-            <div class="metric-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            </div>
-            <div>
-              <div class="metric-value">98 / 100</div>
-              <div class="metric-label">Lighthouse Performance</div>
-            </div>
-          </div>
-
-          <div class="metric-card">
-            <div class="metric-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            </div>
-            <div>
-              <div class="metric-value">+45% Mensual</div>
-              <div class="metric-label">Aumento en Tasa de Conversión</div>
-            </div>
-          </div>
+        <div class="reveal-fade">
+          <div class="section-tag-pill">CONTACTO DIRECTO</div>
+          <h2 class="contact-giant-title">
+            ¿TIENES UNA IDEA?<br>
+            <span class="gradient-accent">HAGÁMOSLA REAL.</span>
+          </h2>
         </div>
 
-        <!-- Real Client Reviews -->
-        <div class="reviews-grid">
+        <div class="contact-main-grid">
           
-          <div class="review-card reveal-fade">
-            <div class="quote-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
-            </div>
-            <p class="review-text">
-              "El trabajo de Arenas superó nuestras expectativas. Logró capturar la elegancia de nuestra marca y el posicionamiento en Google ha sido increíble."
+          <!-- Channels & Direct Links Column -->
+          <div class="contact-channels-col reveal-fade">
+            <p style="font-size:1.15rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">
+              Estoy listo para colaborar en nuevos sitios web, plataformas o e-commerce. Contáctame directamente a través de cualquiera de mis canales oficiales:
             </p>
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">JP</div>
+
+            <a href="https://wa.me/573203184381" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
               <div>
-                <div class="reviewer-name">Juan Pérez</div>
-                <div class="reviewer-role">CEO de Álvarez Perfumería</div>
+                <div class="channel-label-main">WhatsApp</div>
+                <div class="channel-handle-sub">+57 320 318 4381</div>
               </div>
-            </div>
-          </div>
+              <span style="font-size:1.2rem;color:var(--accent-purple);">↗</span>
+            </a>
 
-          <div class="review-card reveal-fade reveal-delay-1">
-            <div class="quote-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
-            </div>
-            <p class="review-text">
-              "Profesionalismo puro. Nuestra web ahora refleja el lujo que vendemos y la experiencia de usuario es impecable en cualquier dispositivo."
-            </p>
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">MG</div>
+            <a href="mailto:arenasjuan210@gmail.com" class="contact-channel-card">
               <div>
-                <div class="reviewer-name">María García</div>
-                <div class="reviewer-role">Directora de Ateneas Luxury</div>
+                <div class="channel-label-main">Email</div>
+                <div class="channel-handle-sub">arenasjuan210@gmail.com</div>
               </div>
-            </div>
-          </div>
+              <span style="font-size:1.2rem;color:var(--accent-purple);">↗</span>
+            </a>
 
-          <div class="review-card reveal-fade reveal-delay-2">
-            <div class="quote-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
-            </div>
-            <p class="review-text">
-              "Gracias a la web de VehiGrúas, hemos aumentado nuestras llamadas diarias. El trabajo de SEO y la velocidad de carga es lo que más nos ha sorprendido."
-            </p>
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">CR</div>
+            <a href="https://www.instagram.com/arenas_dev/" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
               <div>
-                <div class="reviewer-name">Carlos Ruiz</div>
-                <div class="reviewer-role">Fundador de VehiGrúas</div>
+                <div class="channel-label-main">Instagram</div>
+                <div class="channel-handle-sub">@arenas_dev</div>
               </div>
-            </div>
+              <span style="font-size:1.2rem;color:var(--accent-purple);">↗</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@arenas_dev" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
+              <div>
+                <div class="channel-label-main">TikTok</div>
+                <div class="channel-handle-sub">@arenas_dev</div>
+              </div>
+              <span style="font-size:1.2rem;color:var(--accent-purple);">↗</span>
+            </a>
+
+            <a href="https://www.youtube.com/@ArenasDev" target="_blank" rel="noopener noreferrer" class="contact-channel-card">
+              <div>
+                <div class="channel-label-main">YouTube</div>
+                <div class="channel-handle-sub">@ArenasDev</div>
+              </div>
+              <span style="font-size:1.2rem;color:var(--accent-purple);">↗</span>
+            </a>
           </div>
 
-        </div>
-
-        <!-- Real SEO Evidence Images -->
-        <div class="evidences-grid reveal-fade">
-          <div class="evidence-card" onclick="window.open('Posicionados1.jpeg', '_blank')">
-            <img src="Posicionados1.jpeg" alt="Ranking en Google - Búsqueda Orgánica" loading="lazy">
-            <div class="evidence-caption">
-              <span>Ranking #2 en Google (Búsqueda Orgánica)</span>
-              <span>↗</span>
-            </div>
-          </div>
-
-          <div class="evidence-card" onclick="window.open('Valoracion1.jpeg', '_blank')">
-            <img src="Valoracion1.jpeg" alt="Valoración Positiva de Expertos SEO" loading="lazy">
-            <div class="evidence-caption">
-              <span>Valoración Positiva de Expertos SEO</span>
-              <span>↗</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         REAL STATS COUNTER STRIP
-         ========================================================================== -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid reveal-fade">
-          <div class="stat-item">
-            <div class="stat-num">+7</div>
-            <div class="stat-label">Proyectos Reales</div>
-            <div class="stat-sub">Desplegados en producción</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">2+</div>
-            <div class="stat-label">Años de Enfoque</div>
-            <div class="stat-sub">Desarrollo Front-End & Web</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">#1</div>
-            <div class="stat-label">SEO Local</div>
-            <div class="stat-sub">Posicionamiento en búsquedas</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">100%</div>
-            <div class="stat-label">Compromiso</div>
-            <div class="stat-sub">Diseño a medida sin plantillas</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         FEATURED CALL TO ACTION (CTA)
-         ========================================================================== -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-box reveal-fade">
-          <div class="section-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#FFFFFF">INICIA TU PROYECTO</div>
-          <h2 class="cta-title">¿TIENES UNA IDEA?</h2>
-          <p class="cta-desc">Cuéntame qué quieres construir y creemos una experiencia digital que destaque.</p>
-          <a href="#contacto" class="btn btn-primary btn-glow" style="padding:1.1rem 2.6rem;font-size:1rem;">
-            <span>HABLEMOS DE TU PROYECTO ↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         CONTACT SECTION
-         ========================================================================== -->
-    <section id="contacto" class="contact-section">
-      <div class="container">
-        
-        <div class="contact-grid">
-          
-          <!-- Contact Info Column -->
-          <div class="contact-info-col reveal-fade">
-            <div>
-              <div class="section-tag">CANAL DIRECTO</div>
-              <h2 class="section-title">CONTACTO</h2>
-              <p class="section-desc">
-                ¿Tienes una idea, un negocio o un proyecto que necesita cobrar vida en la web? Envíame un mensaje y definamos el siguiente paso.
-              </p>
-            </div>
-
-            <div class="contact-direct-links">
-              <div class="direct-link-card">
-                <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </div>
-                <div>
-                  <div class="direct-title">Formulario Directo</div>
-                  <div class="direct-value">Respuesta en menos de 24 horas</div>
-                </div>
+          <!-- Contact Form Box -->
+          <div class="contact-form-box reveal-fade reveal-delay-1">
+            <h3 style="font-size:1.6rem;font-weight:800;text-transform:uppercase;margin-bottom:1.5rem;">ENVÍAME UN MENSAJE</h3>
+            
+            <form id="contactForm">
+              <div class="form-group-field">
+                <label for="contactName" class="field-label">Nombre o Empresa</label>
+                <input type="text" id="contactName" name="name" class="input-control" placeholder="Tu nombre" required>
               </div>
 
-              <div class="direct-link-card">
-                <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                </div>
-                <div>
-                  <div class="direct-title">Disponibilidad</div>
-                  <div class="direct-value">Abierto a proyectos & freelance</div>
-                </div>
+              <div class="form-group-field">
+                <label for="contactEmail" class="field-label">Correo Electrónico</label>
+                <input type="email" id="contactEmail" name="email" class="input-control" placeholder="tu@email.com" required>
               </div>
 
-              <div class="direct-link-card">
-                <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                </div>
-                <div>
-                  <div class="direct-title">Ubicación</div>
-                  <div class="direct-value">Colombia · Disponible Remoto Global</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form Card -->
-          <div class="contact-form-card reveal-fade reveal-delay-1">
-            <form id="contactForm" novalidate>
-              
-              <div class="form-group">
-                <label for="userName" class="form-label">Nombre</label>
-                <input type="text" id="userName" name="name" class="form-input" placeholder="Tu nombre o empresa" required>
+              <div class="form-group-field">
+                <label for="contactMessage" class="field-label">Detalles del Proyecto</label>
+                <textarea id="contactMessage" name="message" class="textarea-control" placeholder="Cuéntame sobre tu proyecto, objetivos y tiempos estimados..." required></textarea>
               </div>
 
-              <div class="form-group">
-                <label for="userEmail" class="form-label">Email</label>
-                <input type="email" id="userEmail" name="email" class="form-input" placeholder="correo@ejemplo.com" required>
-              </div>
-
-              <div class="form-group">
-                <label for="userMessage" class="form-label">Mensaje</label>
-                <textarea id="userMessage" name="message" class="form-textarea" placeholder="Cuéntame sobre tu proyecto, objetivos o preguntas..." required></textarea>
-              </div>
-
-              <button type="submit" id="submitBtn" class="btn btn-primary btn-glow" style="width:100%;padding:1.1rem">
-                <span>ENVIAR MENSAJE ↗</span>
+              <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%;padding:1.1rem;">
+                <span>ENVIAR MENSAJE →</span>
               </button>
 
-              <!-- State Feedbacks (No alerts) -->
-              <div id="formSuccess" class="form-feedback success">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>¡Mensaje enviado con éxito! Te responderé muy pronto.</span>
+              <div id="formSuccess" class="form-state-banner success">
+                ✓ ¡Mensaje recibido con éxito! Te responderé en breve.
               </div>
-
-              <div id="formError" class="form-feedback error">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <span>Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo.</span>
+              <div id="formError" class="form-state-banner error">
+                ✕ Ocurrió un error al enviar. Por favor contáctame por WhatsApp o email directo.
               </div>
-
             </form>
           </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SOCIAL NETWORKS SECTION
-         ========================================================================== -->
-    <section class="socials-section">
-      <div class="container">
-        
-        <div class="socials-grid reveal-fade">
-          
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer" class="social-card social-instagram">
-            <div class="social-left">
-              <div class="social-icon-wrapper">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-              </div>
-              <div>
-                <div class="social-platform">Instagram</div>
-                <div class="social-handle">@05____arenas</div>
-              </div>
-            </div>
-            <div class="social-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-          </a>
-
-          <!-- YouTube -->
-          <a href="https://www.youtube.com/@05____arenas" target="_blank" rel="noopener noreferrer" class="social-card social-youtube">
-            <div class="social-left">
-              <div class="social-icon-wrapper">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                </svg>
-              </div>
-              <div>
-                <div class="social-platform">YouTube</div>
-                <div class="social-handle">@05____arenas</div>
-              </div>
-            </div>
-            <div class="social-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-          </a>
-
-          <!-- TikTok -->
-          <a href="https://www.tiktok.com/@05___arenas" target="_blank" rel="noopener noreferrer" class="social-card social-tiktok">
-            <div class="social-left">
-              <div class="social-icon-wrapper">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.19a8.16 8.16 0 0 0 4.77 1.52V6.27a4.85 4.85 0 0 1-1-.58z"/>
-                </svg>
-              </div>
-              <div>
-                <div class="social-platform">TikTok</div>
-                <div class="social-handle">@05___arenas</div>
-              </div>
-            </div>
-            <div class="social-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-            </div>
-          </a>
 
         </div>
 
@@ -1182,64 +958,62 @@
   </main>
 
   <!-- ==========================================================================
-       FOOTER
+       FOOTER (LUXURY STUDIO FOOTER)
        ========================================================================== -->
-  <footer class="site-footer">
+  <footer class="editorial-footer">
     <div class="container">
-      <div class="footer-top">
+      
+      <div class="footer-top-grid">
         <div>
-          <a href="#inicio" class="brand-logo">
-            <span class="brand-name">ARENAS<sup style="font-size:0.6em;color:var(--blue-violet)">®</sup></span>
-            <span class="brand-badge">STUDIO</span>
-          </a>
-          <p class="footer-brand-desc">
-            Desarrollo de experiencias web, tiendas online y soluciones digitales diseñadas para destacar y generar resultados.
+          <div class="footer-brand-title">ARENAS®</div>
+          <p class="footer-brand-tagline">
+            DIGITAL CREATIVE STUDIO — Creación de experiencias web, e-commerce y desarrollo de alto impacto visual.
           </p>
         </div>
 
-        <div class="footer-links-group">
+        <div class="footer-nav-columns">
           <div>
-            <div class="footer-col-title">Navegación</div>
-            <ul class="footer-links">
+            <div class="footer-column-title">NAVEGACIÓN</div>
+            <ul class="footer-nav-list">
               <li><a href="#inicio">Inicio</a></li>
               <li><a href="#proyectos">Proyectos</a></li>
-              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#lo-que-hago">Servicios</a></li>
               <li><a href="#sobre-mi">Sobre mí</a></li>
               <li><a href="#contacto">Contacto</a></li>
             </ul>
           </div>
 
           <div>
-            <div class="footer-col-title">Redes</div>
-            <ul class="footer-links">
-              <li><a href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
-              <li><a href="https://www.youtube.com/@05____arenas" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
-              <li><a href="https://www.tiktok.com/@05___arenas" target="_blank" rel="noopener noreferrer">TikTok ↗</a></li>
+            <div class="footer-column-title">CANALES</div>
+            <ul class="footer-nav-list">
+              <li><a href="https://wa.me/573203184381" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li><a href="https://www.instagram.com/arenas_dev/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@arenas_dev" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+              <li><a href="https://www.youtube.com/@ArenasDev" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              <li><a href="https://github.com/Juan-Arenas" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div>© Arenas. Todos los derechos reservados.</div>
-        <div>Diseñado & Desarrollado con Criterio y Precisión</div>
+      <div class="footer-bottom-row">
+        <div>© 2026 ARENAS®. ALL RIGHTS RESERVED.</div>
+        <div>DESIGNED & BUILT BY ARENAS®</div>
       </div>
+
     </div>
   </footer>
 
-  <!-- ==========================================================================
-       AMBIENT SOUND / MUSIC CONTROL
-       ========================================================================== -->
-  <button class="music-toggle-btn" id="musicToggle" aria-label="Activar o pausar música ambiental" title="Música ambiental">
-    <div class="music-wave">
+  <!-- Ambient Audio Player Toggle Button -->
+  <button class="music-toggle-btn" id="musicToggle" aria-label="Reproducir o pausar sonido de fondo" title="Música ambiental">
+    <div class="music-bars-wave">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </button>
-  <audio id="bgMusic" loop src="Music.mp3" preload="none"></audio>
 
-  <!-- Interactive Logic -->
+  <!-- JavaScript Interactions -->
   <script src="script.js"></script>
 </body>
 </html>
