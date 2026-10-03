@@ -1,2602 +1,1245 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="Logo.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arenas — Desarrollo Web, E-commerce & Soluciones Digitales</title>
+  <meta name="description" content="Portafolio de Arenas — Digital Creative Studio. Creación de sitios web, e-commerce, sistemas a medida y soluciones digitales combinando diseño, tecnología e inteligencia artificial.">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Arenas — Digital Creative Studio">
+  <meta property="og:description" content="Creo experiencias digitales que se hacen notar. Desarrollo web de alto nivel, e-commerce y soluciones digitales profesionales.">
+  <meta property="og:image" content="Logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link rel="apple-touch-icon" href="Logo.png">
+
+  <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <title>Arenas | Desarrollador Web Front-End</title>
-  <meta name="description" content="Portafolio de Arenas, Desarrollador Web Front-End." />
-  <meta name="theme-color" content="#030014" />
-  <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
 
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'Poppins', system-ui, sans-serif;
-      background: #030014;
-      color: #fff;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(99, 102, 241, .3) rgba(12, 5, 53, .35)
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-      background: transparent
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(3, 0, 20, .4);
-      border: 1px solid rgba(99, 102, 241, .1)
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(99, 102, 241, .3);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, .1)
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(99, 102, 241, .5)
-    }
-
-    /* WELCOME */
-    #ws {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #030014;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity .8s ease, filter .8s ease;
-      cursor: pointer;
-    }
-
-    #ws.gone {
-      opacity: 0;
-      filter: blur(10px) scale(1.1);
-      pointer-events: none
-    }
-
-    .ws-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(79, 70, 229, .2), rgba(168, 85, 247, .2));
-      filter: blur(64px);
-      animation: pulse 6s cubic-bezier(.4, 0, .6, 1) infinite
-    }
-
-    @keyframes pulse {
-      50% {
-        opacity: .5
-      }
-    }
-
-    .ws-inner {
-      position: relative;
-      z-index: 1;
-      text-align: center
-    }
-
-    .ws-icons {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      margin-bottom: 3rem
-    }
-
-    .ws-icon {
-      position: relative;
-      padding: .75rem;
-      border-radius: 9999px;
-      background: rgba(0, 0, 0, .5);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, .1);
-      transition: transform .3s;
-      cursor: default
-    }
-
-    .ws-icon::before {
-      content: '';
-      position: absolute;
-      inset: -8px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #4f46e5, #a855f7);
-      filter: blur(8px);
-      opacity: .3;
-      transition: opacity .3s
-    }
-
-    .ws-icon:hover::before {
-      opacity: .75
-    }
-
-    .ws-icon:hover {
-      transform: scale(1.1)
-    }
-
-    .ws-icon svg {
-      width: 2rem;
-      height: 2rem;
-      color: #fff;
-      position: relative;
-      z-index: 1;
-      display: block
-    }
-
-    .ws-title {
-      font-size: clamp(2rem, 6vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 2rem
-    }
-
-    .ws-line1 span,
-    .ws-line2 span {
-      display: inline-block;
-      padding: 0 .4rem
-    }
-
-    .ws-line1 span {
-      background: linear-gradient(to right, #fff, #bfdbfe, #e9d5ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ws-line2 span {
-      background: linear-gradient(135deg, #4f46e5, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ws-link {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .5rem 1.5rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition: transform .3s
-    }
-
-    .ws-link::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      background: linear-gradient(to right, rgba(79, 70, 229, .2), rgba(168, 85, 247, .2));
-      filter: blur(8px);
-      transition: filter .3s
-    }
-
-    .ws-link:hover {
-      transform: scale(1.05)
-    }
-
-    .ws-link:hover::before {
-      filter: blur(16px)
-    }
-
-    .ws-link-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: clamp(1rem, 2.5vw, 1.5rem)
-    }
-
-    .ws-link span {
-      background: linear-gradient(to right, #4f46e5, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 600
-    }
-
-    .tw {
-      display: inline
-    }
-
-    .cur {
-      animation: blink .7s infinite
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0
-      }
-    }
-
-    /* NAVBAR */
-    #nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .875rem 5%;
-      background: rgba(3, 0, 20, .7);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-      transition: all .3s
-    }
-
-    #nav.sc {
-      background: rgba(3, 0, 20, .92);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, .3)
-    }
-
-    .nl {
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-decoration: none;
-      background: linear-gradient(to right, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .nls {
-      display: flex;
-      gap: .25rem;
-      list-style: none
-    }
-
-    .nls a {
-      padding: .4rem .85rem;
-      border-radius: .5rem;
-      color: rgba(148, 163, 184, 1);
-      text-decoration: none;
-      font-size: .875rem;
-      font-weight: 500;
-      transition: all .2s
-    }
-
-    .nls a:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, .05)
-    }
-
-    .nls a.act {
-      color: #fff;
-      background: rgba(99, 102, 241, .15)
-    }
-
-    .nmb {
-      display: none;
-      background: rgba(255, 255, 255, .05);
-      border: 1px solid rgba(255, 255, 255, .1);
-      color: #fff;
-      padding: .45rem .6rem;
-      border-radius: .5rem;
-      cursor: pointer;
-      line-height: 1
-    }
-
-    /* SIDEBAR */
-    .ov {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 40;
-      background: rgba(3, 0, 20, .6);
-      backdrop-filter: blur(4px)
-    }
-
-    .ov.op {
-      display: block
-    }
-
-    .sb {
-      position: fixed;
-      inset-y: 0;
-      left: 0;
-      z-index: 41;
-      width: 15rem;
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid rgba(255, 255, 255, .08);
-      background: #0a0a1a;
-      backdrop-filter: blur(16px);
-      transform: translateX(-100%);
-      transition: transform .3s
-    }
-
-    .sb.op {
-      transform: translateX(0)
-    }
-
-    .sb a {
-      padding: .9rem 1.5rem;
-      color: rgba(148, 163, 184, 1);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-      transition: all .2s;
-      display: block
-    }
-
-    .sb a:hover {
-      color: #fff;
-      background: rgba(99, 102, 241, .1)
-    }
-
-    .sbc {
-      padding: .9rem 1.5rem;
-      background: none;
-      border: none;
-      color: rgba(156, 163, 175, .7);
-      font-size: .85rem;
-      cursor: pointer;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, .05);
-      font-family: 'Poppins', sans-serif
-    }
-
-    /* HERO */
-    #Home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 5rem;
-      overflow: hidden;
-      position: relative
-    }
-
-    .hgrid {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-image: linear-gradient(to right, rgba(79, 79, 79, .07) 1px, transparent 1px), linear-gradient(to bottom, rgba(79, 79, 79, .07) 1px, transparent 1px);
-      background-size: 40px 40px
-    }
-
-    .hi {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-      padding: 2rem 5%
-    }
-
-    .ht h1 {
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.25rem
-    }
-
-    .ht h1 .hlo {
-      background: linear-gradient(to right, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ht h1 .hn {
-      display: block;
-      margin-top: .4rem;
-      color: #e5e7eb
-    }
-
-    .hdesc {
-      color: rgba(156, 163, 175, 1);
-      line-height: 1.8;
-      font-size: .95rem;
-      margin-bottom: 1.5rem;
-      text-align: justify
-    }
-
-    .qbox {
-      position: relative;
-      padding: .875rem .875rem .875rem 1.75rem;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, rgba(99, 102, 241, .05), transparent, rgba(168, 85, 247, .05));
-      border: 1px solid rgba(99, 102, 241, .3);
-      backdrop-filter: blur(12px);
-      overflow: hidden
-    }
-
-    .qbox::before {
-      content: '';
-      position: absolute;
-      top: .5rem;
-      right: 1rem;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 9999px;
-      background: linear-gradient(to right, rgba(99, 102, 241, .2), rgba(168, 85, 247, .2));
-      filter: blur(16px)
-    }
-
-    .qi {
-      position: absolute;
-      top: .75rem;
-      left: 1rem;
-      color: rgba(99, 102, 241, .3)
-    }
-
-    .qbox blockquote {
-      color: rgba(209, 213, 219, 1);
-      font-style: italic;
-      font-size: .875rem;
-      position: relative;
-      z-index: 1
-    }
-
-    .hbtns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap
-    }
-
-    .btp {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .625rem 1.5rem;
-      border-radius: .5rem;
-      font-weight: 500;
-      font-size: .875rem;
-      background: linear-gradient(to right, #6366f1, #a855f7);
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all .3s;
-      font-family: 'Poppins', sans-serif
-    }
-
-    .btp:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 30px rgba(99, 102, 241, .4)
-    }
-
-    .bto {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .625rem 1.5rem;
-      border-radius: .5rem;
-      font-weight: 500;
-      font-size: .875rem;
-      background: transparent;
-      color: #a855f7;
-      text-decoration: none;
-      border: 1px solid rgba(168, 85, 247, .5);
-      cursor: pointer;
-      transition: all .3s;
-      font-family: 'Poppins', sans-serif
-    }
-
-    .bto:hover {
-      transform: scale(1.05);
-      background: rgba(168, 85, 247, .1)
-    }
-
-    /* PHOTO */
-    .hphoto {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center
-    }
-
-    .pwrap {
-      position: relative;
-      cursor: pointer;
-      transition: transform .7s
-    }
-
-    .pwrap:hover {
-      transform: scale(1.05)
-    }
-
-    .pg1 {
-      position: absolute;
-      inset: -24px;
-      border-radius: 9999px;
-      opacity: .25;
-      background: linear-gradient(to right, #7c3aed, #6366f1, #a855f7);
-      filter: blur(40px);
-      animation: spin8 8s linear infinite
-    }
-
-    @keyframes spin8 {
-      to {
-        transform: rotate(360deg)
-      }
-    }
-
-    .pg2 {
-      position: absolute;
-      inset: -24px;
-      border-radius: 9999px;
-      opacity: .25;
-      background: linear-gradient(to left, #d946ef, #f43f5e, #ec4899);
-      filter: blur(40px);
-      animation: pls 3s ease infinite
-    }
-
-    @keyframes pls {
-
-      0%,
-      100% {
-        opacity: .25
-      }
-
-      50% {
-        opacity: .1
-      }
-    }
-
-    .pg3 {
-      position: absolute;
-      inset: -24px;
-      border-radius: 9999px;
-      opacity: .25;
-      background: linear-gradient(to top, #2563eb, #06b6d4, #2dd4bf);
-      filter: blur(40px);
-      animation: pls 3s ease 1s infinite
-    }
-
-    .pring {
-      position: relative;
-      width: 18rem;
-      height: 18rem;
-      border-radius: 9999px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(120, 119, 198, .3)
-    }
-
-    .pring img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .7s
-    }
-
-    .pwrap:hover .pring img {
-      transform: scale(1.1) rotate(2deg)
-    }
-
-    .pb {
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      border: 4px solid rgba(255, 255, 255, .2);
-      transition: border-color .7s;
-      z-index: 2
-    }
-
-    .pwrap:hover .pb {
-      border-color: rgba(255, 255, 255, .4)
-    }
-
-    .po1 {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, .2), transparent, rgba(0, 0, 0, .4));
-      transition: opacity .7s
-    }
-
-    .po2 {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      opacity: 0;
-      transition: all .7s
-    }
-
-    .po2-a {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top right, transparent, rgba(255, 255, 255, .2), transparent);
-      transform: translateX(-100%);
-      transition: transform 1s
-    }
-
-    .po2-b {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom left, transparent, rgba(255, 255, 255, .1), transparent);
-      transform: translateY(100%);
-      transition: transform 1s .1s
-    }
-
-    .pwrap:hover .po1 {
-      opacity: 0
-    }
-
-    .pwrap:hover .po2 {
-      opacity: 1
-    }
-
-    .pwrap:hover .po2-a {
-      transform: translateX(100%)
-    }
-
-    .pwrap:hover .po2-b {
-      transform: translateY(-100%)
-    }
-
-    .pno {
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, rgba(99, 102, 241, .2), rgba(168, 85, 247, .2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(99, 102, 241, .5)
-    }
-
-    /* STATS */
-    .sg {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 4rem;
-      padding: 0 5%;
-      cursor: pointer;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto
-    }
-
-    .sc2 {
-      padding: 1.5rem;
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, .02);
-      border: 1px solid rgba(255, 255, 255, .07);
-      transition: all .3s;
-      text-align: center
-    }
-
-    .sc2:hover {
-      transform: translateY(-4px);
-      border-color: rgba(99, 102, 241, .3)
-    }
-
-    .si {
-      display: flex;
-      justify-content: center;
-      margin-bottom: .75rem
-    }
-
-    .si svg {
-      width: 1.5rem;
-      height: 1.5rem
-    }
-
-    .sv {
-      font-size: 2rem;
-      font-weight: 700
-    }
-
-    .slb {
-      font-size: .875rem;
-      font-weight: 600;
-      color: #e5e7eb;
-      margin-top: .2rem
-    }
-
-    .sd {
-      font-size: .75rem;
-      color: rgba(148, 163, 184, .7);
-      margin-top: .2rem
-    }
-
-    /* SECTION COMMON */
-    section {
-      padding: 5rem 5%;
-      position: relative
-    }
-
-    .sh {
-      text-align: center;
-      margin-bottom: 3rem
-    }
-
-    .stitle {
-      display: inline-block;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 700;
-      background: linear-gradient(45deg, #6366f1 10%, #a855f7 93%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ssub {
-      color: rgba(148, 163, 184, 1);
-      max-width: 42rem;
-      margin: .5rem auto 0;
-      font-size: .9rem
-    }
-
-    .asub {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      color: rgba(192, 132, 252, 1);
-      font-size: .9rem
-    }
-
-    .asub svg {
-      width: 1.25rem;
-      height: 1.25rem
-    }
-
-    /* TABS */
-    .tbbar {
-      position: relative;
-      border-radius: 1.25rem;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .1);
-      margin-bottom: 2rem
-    }
-
-    .tbbar::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(139, 92, 246, .03), rgba(59, 130, 246, .03));
-      backdrop-filter: blur(10px);
-      z-index: 0
-    }
-
-    .tbs {
-      display: flex;
-      position: relative;
-      z-index: 1;
-      padding: .5rem;
-      gap: .5rem
-    }
-
-    .tb {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .4rem;
-      padding: 1.1rem .5rem;
-      border-radius: .75rem;
-      border: none;
-      background: transparent;
-      color: rgba(148, 163, 184, 1);
-      font-size: .875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .4s cubic-bezier(.4, 0, .2, 1);
-      font-family: 'Poppins', sans-serif
-    }
-
-    .tb:hover {
-      color: #fff;
-      background: rgba(139, 92, 246, .1);
-      transform: translateY(-2px)
-    }
-
-    .tb.act {
-      color: #fff;
-      background: linear-gradient(135deg, rgba(139, 92, 246, .2), rgba(59, 130, 246, .2));
-      box-shadow: 0 4px 15px -3px rgba(139, 92, 246, .2)
-    }
-
-    .tb svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      transition: all .3s
-    }
-
-    .tb:hover svg,
-    .tb.act svg {
-      color: #a78bfa;
-      transform: scale(1.1) rotate(5deg)
-    }
-
-    .tp {
-      display: none
-    }
-
-    .tp.act {
-      display: block
-    }
-
-    /* PROJECTS */
-    .pg4 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.25rem
-    }
-
-    .pcard {
-      position: relative;
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-      border-radius: .75rem;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(15, 23, 42, .9), rgba(30, 41, 59, .9));
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, .1);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
-      transition: all .3s
-    }
-
-    .pcard:hover {
-      box-shadow: 0 25px 50px -12px rgba(168, 85, 247, .2);
-      transform: translateY(-4px)
-    }
-
-    .pov {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(59, 130, 246, .1), rgba(168, 85, 247, .1), rgba(236, 72, 153, .1));
-      opacity: .5;
-      transition: opacity .3s
-    }
-
-    .pcard:hover .pov {
-      opacity: .7
-    }
-
-    .pi2 {
-      position: relative;
-      padding: 1.25rem;
-      z-index: 1
-    }
-
-    .pimgw {
-      border-radius: .5rem;
-      overflow: hidden;
-      margin-bottom: 1rem;
-      aspect-ratio: 16/8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(99, 102, 241, .08), rgba(168, 85, 247, .05));
-      transition: transform .5s
-    }
-
-    .pimgw img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform .5s;
-    }
-
-    .pcard:hover .pimgw img {
-      transform: scale(1.04);
-    }
-
-    .pimgw svg {
-      width: 2.8rem;
-      height: 2.8rem;
-      color: rgba(139, 92, 246, .6)
-    }
-
-    .pcard:hover .pimgw {
-      transform: scale(1.05)
-    }
-
-    .ptitle {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: .4rem;
-      background: linear-gradient(to right, #bfdbfe, #e9d5ff, #fbcfe8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .pdesc {
-      color: rgba(209, 213, 219, .8);
-      font-size: .8rem;
-      line-height: 1.6;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden
-    }
-
-    .plinks {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, .05)
-    }
-
-    .pl {
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      font-size: .82rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: rgba(96, 165, 250, 1);
-      transition: color .2s
-    }
-
-    .pl:hover {
-      color: rgba(147, 197, 253, 1)
-    }
-
-    .pl svg {
-      width: 1rem;
-      height: 1rem
-    }
-
-    .pl2 {
-      color: rgba(165, 180, 252, .8)
-    }
-
-    /* TECH */
-    .tg {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 1rem
-    }
-
-    .tc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .75rem;
-      padding: 1.25rem .75rem;
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, .02);
-      border: 1px solid rgba(255, 255, 255, .07);
-      transition: all .3s;
-      cursor: default
-    }
-
-    .tc:hover {
-      background: rgba(99, 102, 241, .1);
-      border-color: rgba(99, 102, 241, .4);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, .15)
-    }
-
-    .tic {
-      width: 3rem;
-      height: 3rem;
-      object-fit: contain
-    }
-
-    .tn {
-      font-size: .78rem;
-      font-weight: 500;
-      color: rgba(209, 213, 219, .8);
-      text-align: center
-    }
-
-    .smb {
-      margin-top: 1.5rem;
-      padding: .6rem 1.5rem;
-      border-radius: .5rem;
-      background: rgba(255, 255, 255, .05);
-      border: 1px solid rgba(255, 255, 255, .1);
-      color: rgba(148, 163, 184, 1);
-      font-family: 'Poppins', sans-serif;
-      font-size: .85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .3s
-    }
-
-    .smb:hover {
-      background: rgba(99, 102, 241, .15);
-      color: #fff;
-      border-color: rgba(99, 102, 241, .3)
-    }
-
-
-
-    /* INTERACTIVE TERMINAL */
-    #Terminal { padding-top: 4rem; padding-bottom: 5rem; }
-    .terminal-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .terminal-glow {
-      position: absolute;
-      inset: 8% 10%;
-      background: radial-gradient(circle, rgba(99,102,241,.16), transparent 62%);
-      filter: blur(45px);
-      pointer-events: none;
-    }
-    .terminal {
-      position: relative;
-      overflow: hidden;
-      border-radius: 1.15rem;
-      background: rgba(7, 8, 20, .88);
-      border: 1px solid rgba(139, 92, 246, .22);
-      box-shadow: 0 30px 80px rgba(0,0,0,.42), 0 0 45px rgba(99,102,241,.08);
-      backdrop-filter: blur(18px);
-    }
-    .terminal::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(99,102,241,.045), transparent 42%, rgba(168,85,247,.035));
-      pointer-events: none;
-    }
-    .terminal-head {
-      position: relative;
-      z-index: 2;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      background: rgba(255,255,255,.025);
-    }
-    .terminal-dots { display:flex; gap:.42rem; align-items:center; }
-    .terminal-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.22); }
-    .terminal-title {
-      position:absolute; left:50%; transform:translateX(-50%);
-      font: 500 .72rem/1 'Poppins', sans-serif;
-      letter-spacing:.08em; color:rgba(203,213,225,.55);
-    }
-    .terminal-status {
-      display:flex; align-items:center; gap:.45rem;
-      font-size:.68rem; color:rgba(148,163,184,.62);
-    }
-    .terminal-status i { width:6px; height:6px; border-radius:50%; background:#818cf8; box-shadow:0 0 10px rgba(129,140,248,.8); }
-    .terminal-body { position:relative; z-index:1; padding:1.5rem; }
-    .terminal-intro { margin-bottom:1.2rem; }
-    .terminal-kicker { color:#a78bfa; font:600 .7rem/1.4 'Poppins',sans-serif; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.55rem; }
-    .terminal-heading { font-size:1.18rem; font-weight:600; color:#f8fafc; margin-bottom:.35rem; }
-    .terminal-helptext { color:rgba(148,163,184,.75); font-size:.78rem; line-height:1.6; }
-    .terminal-actions {
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:.65rem;
-      margin:1.2rem 0 1.1rem;
-    }
-    .term-btn {
-      position:relative; display:flex; align-items:center; gap:.7rem;
-      min-height:58px; padding:.75rem .85rem;
-      border:1px solid rgba(255,255,255,.075); border-radius:.75rem;
-      background:rgba(255,255,255,.025); color:#cbd5e1;
-      cursor:pointer; text-align:left; font-family:'Poppins',sans-serif;
-      transition:transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
-    }
-    .term-btn::after { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.05)); opacity:0; transition:opacity .25s; pointer-events:none; }
-    .term-btn:hover, .term-btn:focus-visible {
-      transform:translateY(-2px); border-color:rgba(129,140,248,.35);
-      background:rgba(99,102,241,.055); box-shadow:0 10px 28px rgba(0,0,0,.18), 0 0 18px rgba(99,102,241,.08); outline:none;
-    }
-    .term-btn:hover::after, .term-btn:focus-visible::after { opacity:1; }
-    .term-icon {
-      position:relative; z-index:1; width:31px; height:31px; flex:0 0 31px;
-      display:grid; place-items:center; border-radius:.55rem;
-      color:#a78bfa; background:rgba(99,102,241,.09); border:1px solid rgba(139,92,246,.14);
-    }
-    .term-icon svg { width:16px; height:16px; }
-    .term-btn-text { position:relative; z-index:1; min-width:0; }
-    .term-btn-label { display:block; font-size:.78rem; font-weight:600; color:#e2e8f0; }
-    .term-btn-desc { display:block; margin-top:.12rem; font-size:.64rem; color:rgba(148,163,184,.58); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .terminal-screen {
-      min-height:230px; max-height:330px; overflow:auto; padding:1rem;
-      border:1px solid rgba(255,255,255,.06); border-radius:.75rem;
-      background:rgba(0,0,0,.28); box-shadow:inset 0 1px 18px rgba(0,0,0,.18);
-      scrollbar-width:thin; scrollbar-color:rgba(99,102,241,.28) transparent;
-    }
-    .term-line { font:400 .75rem/1.75 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color:rgba(203,213,225,.78); white-space:pre-wrap; word-break:break-word; }
-    .term-line.cmd { color:#a5b4fc; }
-    .term-line.muted { color:rgba(148,163,184,.55); }
-    .term-line.success { color:#c4b5fd; }
-    .term-line strong { color:#f8fafc; font-weight:600; }
-    .term-project { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.38rem .5rem; margin:.12rem 0; border-radius:.45rem; color:rgba(226,232,240,.78); cursor:pointer; transition:background .2s,color .2s; }
-    .term-project:hover { background:rgba(99,102,241,.09); color:#fff; }
-    .term-project span:last-child { color:rgba(167,139,250,.72); font-size:.68rem; }
-    .terminal-input-row { display:flex; align-items:center; gap:.5rem; margin-top:.7rem; }
-    .terminal-prompt { color:#a78bfa; font:600 .75rem ui-monospace,monospace; white-space:nowrap; }
-    .terminal-input {
-      flex:1; min-width:0; border:0; outline:0; background:transparent; color:#e2e8f0;
-      font:400 .75rem ui-monospace,monospace; caret-color:#a78bfa;
-    }
-    .terminal-input::placeholder { color:rgba(148,163,184,.35); }
-    .terminal-tip { margin-top:.65rem; text-align:center; color:rgba(148,163,184,.43); font-size:.66rem; }
-    @media(max-width:768px) {
-      .terminal-body { padding:1rem; }
-      .terminal-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .terminal-title { display:none; }
-      .term-btn { min-height:54px; }
-      .terminal-screen { min-height:220px; }
-    }
-    @media(max-width:480px) {
-      .terminal-actions { grid-template-columns:1fr; }
-      .term-btn-desc { display:none; }
-      .terminal-screen { min-height:200px; padding:.8rem; }
-    }
-
-    /* CONTACT */
-    #Contact {
-      padding-bottom: 5rem
-    }
-
-    .cg2 {
-      display: grid;
-      grid-template-columns: 45% 55%;
-      gap: 3rem;
-      align-items: start
-    }
-
-    .ccard {
-      background: rgba(255, 255, 255, .05);
-      backdrop-filter: blur(16px);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      transition: box-shadow .5s
-    }
-
-    .ccard:hover {
-      box-shadow: 0 0 40px rgba(99, 102, 241, .1)
-    }
-
-    .cctitle {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-      background: linear-gradient(to right, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent
-    }
-
-    .ccsub {
-      color: rgba(156, 163, 175, 1);
-      font-size: .9rem;
-      margin-bottom: 2rem
-    }
-
-    .fg {
-      position: relative;
-      margin-bottom: 1.25rem
-    }
-
-    .fic {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      width: 1.25rem;
-      height: 1.25rem;
-      color: rgba(156, 163, 175, 1);
-      transition: color .3s;
-      pointer-events: none
-    }
-
-    .fg:focus-within .fic {
-      color: #6366f1
-    }
-
-    .fi,
-    .ft {
-      width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      border-radius: .75rem;
-      font-size: .875rem;
-      background: rgba(255, 255, 255, .1);
-      border: 1px solid rgba(255, 255, 255, .2);
-      color: #fff;
-      outline: none;
-      transition: all .3s;
-      font-family: 'Poppins', sans-serif
-    }
-
-    .ft {
-      resize: vertical;
-      min-height: 120px
-    }
-
-    .fi::placeholder,
-    .ft::placeholder {
-      color: rgba(107, 114, 128, 1)
-    }
-
-    .fi:hover,
-    .ft:hover {
-      border-color: rgba(99, 102, 241, .3)
-    }
-
-    .fi:focus,
-    .ft:focus {
-      border-color: rgba(99, 102, 241, .6);
-      box-shadow: 0 0 0 2px rgba(99, 102, 241, .2)
-    }
-
-    .fi:disabled,
-    .ft:disabled {
-      opacity: .5
-    }
-
-    .soc {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem
-    }
-
-    .sc3 {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, .1);
-      text-decoration: none;
-      transition: all .3s;
-      overflow: hidden
-    }
-
-    .sc3:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .3)
-    }
-
-    .sc3-ic {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: .5rem;
-      flex-shrink: 0
-    }
-
-    .sc3-ic svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      color: #fff
-    }
-
-    .sc3-m {
-      font-size: .9rem;
-      font-weight: 600;
-      color: #fff
-    }
-
-    .sc3-s {
-      font-size: .78rem;
-      color: rgba(156, 163, 175, 1)
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 1.5rem 5%;
-      border-top: 1px solid rgba(255, 255, 255, .05);
-      color: rgba(148, 163, 184, .6);
-      font-size: .82rem
-    }
-
-    footer a {
-      color: rgba(165, 180, 252, .8);
-      text-decoration: none
-    }
-
-    /* TOAST */
-    .toast {
-      position: fixed;
-      top: 5rem;
-      right: 1.5rem;
-      z-index: 9000;
-      padding: .875rem 1.5rem;
-      border-radius: .75rem;
-      background: rgba(34, 197, 94, .15);
-      border: 1px solid rgba(34, 197, 94, .3);
-      color: #4ade80;
-      font-size: .875rem;
-      font-weight: 500;
-      transform: translateX(200%);
-      transition: transform .4s ease;
-      display: flex;
-      align-items: center;
-      gap: .5rem
-    }
-
-    .toast.show {
-      transform: translateX(0)
-    }
-
-    /* RESPONSIVE */
-    @media(max-width:1024px) {
-      .cg2 {
-        grid-template-columns: 1fr
-      }
-
-      .soc {
-        display: grid;
-        grid-template-columns: 1fr 1fr
-      }
-    }
-
-    @media(max-width:768px) {
-      #nav {
-        padding: .75rem 4%
-      }
-
-      .nls {
-        display: none
-      }
-
-      .nmb {
-        display: block
-      }
-
-      section {
-        padding: 3rem 4%
-      }
-
-      .hi {
-        grid-template-columns: 1fr;
-        text-align: center
-      }
-
-      .ht h1 {
-        font-size: clamp(1.6rem, 6vw, 2.5rem)
-      }
-
-      .hbtns {
-        justify-content: center
-      }
-
-      .hphoto {
-        justify-content: center;
-        order: -1;
-        padding-top: 1rem
-      }
-
-      .pring {
-        width: 13rem;
-        height: 13rem
-      }
-
-      .sg {
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem
-      }
-
-      .pg4 {
-        grid-template-columns: 1fr
-      }
-
-      .tg {
-        grid-template-columns: repeat(3, 1fr)
-      }
-
-      .soc {
-        grid-template-columns: 1fr
-      }
-
-      .cg2 {
-        grid-template-columns: 1fr
-      }
-    }
-
-    @media(max-width:480px) {
-      .tg {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .sg {
-        grid-template-columns: 1fr 1fr
-      }
-    }
-
-    /* MUSIC BUTTON */
-    .music-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-      width: 3.5rem;
-      height: 3.5rem;
-      border-radius: 50%;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #fff;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    .music-btn:hover {
-      transform: scale(1.1);
-      border-color: rgba(168, 85, 247, 0.6);
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-    }
-
-    .music-btn svg {
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: all 0.3s;
-    }
-
-    .music-btn.playing .music-icon-play {
-      display: none;
-    }
-
-    .music-btn:not(.playing) .music-icon-pause {
-      display: none;
-    }
-
-    @media(max-width: 768px) {
-      .music-btn {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 3rem;
-        height: 3rem;
-      }
-    }
-
-    /* REVIEWS SECTION */
-    .rg {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .rc {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 1.25rem;
-      padding: 2rem;
-      position: relative;
-      transition: all 0.3s;
-    }
-
-    .rc:hover {
-      transform: translateY(-5px);
-      border-color: rgba(99, 102, 241, 0.4);
-      background: rgba(99, 102, 241, 0.05);
-    }
-
-    .rc-q {
-      color: rgba(99, 102, 241, 0.4);
-      margin-bottom: 1rem;
-    }
-
-    .rc-t {
-      color: #e5e7eb;
-      font-style: italic;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .rc-u {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .rc-ua {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #4f46e5, #a855f7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .rc-un {
-      font-weight: 600;
-      color: #fff;
-      font-size: 0.9rem;
-    }
-
-    .rc-ur {
-      font-size: 0.75rem;
-      color: rgba(148, 163, 184, 0.7);
-    }
-
-    .gg-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .gg-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .gg-ic {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 0.5rem;
-      background: rgba(34, 197, 94, 0.1);
-      color: #4ade80;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gg-val {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .gg-lbl {
-      font-size: 0.8rem;
-      color: rgba(148, 163, 184, 0.8);
-    }
-
-    .ev-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 4rem;
-    }
-
-    .ev-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1.25rem;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: zoom-in;
-    }
-
-    .ev-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(99, 102, 241, 0.5);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .ev-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      transition: transform 0.5s;
-    }
-
-    .ev-card:hover .ev-img {
-      transform: scale(1.05);
-    }
-
-    .ev-cap {
-      padding: 1.25rem;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      text-align: center;
-      font-weight: 600;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    @media(max-width: 480px) {
-      .rg {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ABOUT CARDS */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      max-width: 1100px;
-      margin: 3rem auto 0;
-    }
-
-    .about-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 2rem;
-      padding: 3rem 2rem;
-      position: relative;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      backdrop-filter: blur(12px);
-    }
-
-    .about-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(99, 102, 241, 0.4);
-      background: rgba(99, 102, 241, 0.04);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .card-photo-wrapper {
-      position: relative;
-      width: 10rem;
-      height: 10rem;
-      margin-bottom: 2rem;
-    }
-
-    .card-photo-wrapper .pring {
-      width: 10rem;
-      height: 10rem;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-      z-index: 2;
-    }
-
-    .card-photo-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .card-glow {
-      position: absolute;
-      inset: -15px;
-      border-radius: 50%;
-      filter: blur(20px);
-      opacity: 0.4;
-      z-index: 1;
-      animation: pulse 4s ease infinite;
-    }
-
-    .card-glow.blue {
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-    }
-
-    .card-glow.purple {
-      background: linear-gradient(135deg, #a855f7, #ec4899);
-    }
-
-    .card-name {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.25rem;
-    }
-
-    .card-role {
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      background: linear-gradient(to right, #6366f1, #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-desc {
-      font-size: 0.95rem;
-      color: rgba(209, 213, 219, 0.8);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-
-    .card-extra {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      color: rgba(148, 163, 184, 0.9);
-      padding: 0.5rem 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-  </style>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-  <!-- WELCOME SCREEN -->
-  <div id="ws">
-    <div class="ws-bg"></div>
-    <div class="ws-inner">
-      <div class="ws-icons">
-        <div class="ws-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="m18 16 4-4-4-4" />
-            <path d="m6 8-4 4 4 4" />
-            <path d="m14.5 4-5 16" />
+  <!-- High-Performance Ambient Background (Zero CPU overhead) -->
+  <div class="ambient-background" aria-hidden="true"></div>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#inicio" class="brand-logo" aria-label="Ir al inicio de Arenas">
+        <span class="brand-name">ARENAS<sup style="font-size:0.6em;color:var(--blue-violet)">®</sup></span>
+        <span class="brand-badge">STUDIO</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contacto" class="btn btn-primary header-btn btn-glow">
+          <span>Hablemos</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
-        </div>
-        <div class="ws-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        </div>
-        <div class="ws-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-            <path d="M2 12h20" />
-          </svg>
-        </div>
-      </div>
-      <div class="ws-title">
-        <div class="ws-line1">
-          <span>Bienvenido</span><span>A</span><span>Mi</span>
-        </div>
-        <div class="ws-line2">
-          <span>Portafolio</span><span>Web</span>
-        </div>
-      </div>
-      <div>
-        <a href="#Home" class="ws-link">
-          <div class="ws-link-inner">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="m18 16 4-4-4-4" />
-              <path d="m6 8-4 4 4 4" />
-              <path d="m14.5 4-5 16" />
-            </svg>
-            <span><span class="tw" id="tw"></span><span class="cur">|</span></span>
-          </div>
         </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button class="mobile-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
-  </div>
+  </header>
 
-  <!-- NAVBAR -->
-  <nav id="nav">
-    <a href="#Home" class="nl">Arenas.dev</a>
-    <ul class="nls">
-      <li><a href="#Home" class="act">Inicio</a></li>
-      <li><a href="#Portofolio">Portafolio</a></li>
-      <li><a href="#Terminal">Terminal</a></li>
-      <li><a href="#Contact">Contacto</a></li>
+  <!-- Fullscreen Mobile Navigation Menu -->
+  <div class="mobile-menu-overlay" aria-hidden="true">
+    <ul class="mobile-menu-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="nmb" onclick="openSB()" aria-label="Menú">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-    </button>
-  </nav>
-  <div class="ov" id="ov" onclick="closeSB()"></div>
-  <aside class="sb" id="sb">
-    <button class="sbc" onclick="closeSB()">✕ Cerrar menú</button>
-    <a href="#Home" onclick="closeSB()">Inicio</a>
-    <a href="#Portofolio" onclick="closeSB()">Portafolio</a>
-    <a href="#Terminal" onclick="closeSB()">Terminal</a>
-    <a href="#Contact" onclick="closeSB()">Contacto</a>
-  </aside>
-
-  <!-- HOME -->
-  <section id="Home">
-    <div class="hgrid"></div>
-    <div class="hi">
-      <div class="ht">
-        <h1>
-          <span class="hlo" data-aos="fade-right" data-aos-duration="1000">Hola, soy</span>
-          <span class="hn" data-aos="fade-right" data-aos-duration="1300">Arenas</span>
-        </h1>
-        <p class="hdesc" data-aos="fade-right" data-aos-duration="1500">
-          Soy un estudiante de Ingeniería Informática enfocado en el desarrollo Front-End. Me dedico a crear
-          experiencias digitales atractivas y siempre busco ofrecer las mejores soluciones en cada proyecto que
-          desarrollo.
-        </p>
-        <div class="qbox" data-aos="fade-up" data-aos-duration="1700">
-          <div class="qi">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-            </svg>
-          </div>
-          <blockquote>"Usando la IA como herramienta profesional, no como reemplazo."</blockquote>
-        </div>
-        <div class="hbtns">
-          <a href="#Portofolio" class="btp" data-aos="fade-up" data-aos-duration="800">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <line x1="8" y1="21" x2="16" y2="21" />
-              <line x1="12" y1="17" x2="12" y2="21" />
-            </svg>
-            Ver Proyectos
-          </a>
-          <a href="#Contact" class="bto" data-aos="fade-up" data-aos-duration="1000">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            Contáctame
-          </a>
-        </div>
-      </div>
-      <!-- PHOTO -->
-      <div class="hphoto">
-        <div class="pwrap" data-aos="fade-up" data-aos-duration="1000">
-          <div class="pg1"></div>
-          <div class="pg2"></div>
-          <div class="pg3"></div>
-          <div class="pring">
-            <div class="pb"></div>
-            <div class="po1"></div>
-            <div class="po2">
-              <div class="po2-a"></div>
-              <div class="po2-b"></div>
-            </div>
-            <img src="Arenas.png" alt="Arenas" loading="lazy" id="photo-img">
-            <div class="pno" id="photo-no" style="display:none">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STATS: 2 cards -->
-    <a href="#Portofolio" style="text-decoration:none">
-      <div class="sg">
-        <div class="sc2" data-aos="fade-right" data-aos-duration="1000">
-          <div class="si">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="stroke:url(#sg1)">
-              <defs>
-                <linearGradient id="sg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#6366f1" />
-                  <stop offset="100%" stop-color="#a855f7" />
-                </linearGradient>
-              </defs>
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <line x1="8" y1="21" x2="16" y2="21" />
-              <line x1="12" y1="17" x2="12" y2="21" />
-            </svg>
-          </div>
-          <div class="sv" id="sp"
-            style="background:linear-gradient(to right,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-            0</div>
-          <div class="slb">Total Proyectos</div>
-          <div class="sd">Soluciones web innovadoras creadas</div>
-        </div>
-        <div class="sc2" data-aos="fade-left" data-aos-duration="1000">
-          <div class="si">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="stroke:url(#sg3)">
-              <defs>
-                <linearGradient id="sg3" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#6366f1" />
-                  <stop offset="100%" stop-color="#a855f7" />
-                </linearGradient>
-              </defs>
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-          </div>
-          <div class="sv" id="sy"
-            style="background:linear-gradient(to right,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
-            0</div>
-          <div class="slb">Años de Experiencia</div>
-          <div class="sd">Viaje de aprendizaje continuo</div>
-        </div>
-      </div>
+    <a href="#contacto" class="btn btn-primary btn-glow" style="font-size:1.1rem;padding:1.1rem 2.4rem;">
+      <span>HABLEMOS DE TU PROYECTO ↗</span>
     </a>
-  </section>
-
-
-
-  <!-- INTERACTIVE TERMINAL -->
-  <section id="Terminal">
-    <div class="sh" data-aos="fade-up" data-aos-duration="1000">
-      <h2 class="stitle">Terminal</h2>
-      <p class="ssub">Explora el portafolio de una forma diferente. No necesitas conocer comandos.</p>
-    </div>
-    <div class="terminal-wrap" data-aos="fade-up" data-aos-duration="1100">
-      <div class="terminal-glow"></div>
-      <div class="terminal">
-        <div class="terminal-head">
-          <div class="terminal-dots"><i class="terminal-dot"></i><i class="terminal-dot"></i><i class="terminal-dot"></i></div>
-          <div class="terminal-title">arenas@portfolio — interactive shell</div>
-          <div class="terminal-status"><i></i> online</div>
-        </div>
-        <div class="terminal-body">
-          <div class="terminal-intro">
-            <div class="terminal-kicker">Interactive portfolio</div>
-            <div class="terminal-heading">Explora la terminal</div>
-            <div class="terminal-helptext">Toca cualquiera de las opciones para ver la información. También puedes escribir un comando abajo.</div>
-          </div>
-          <div class="terminal-actions" id="terminal-actions">
-            <button class="term-btn" onclick="runTerminal('about')" aria-label="Ver sobre mí">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Sobre mí</span><span class="term-btn-desc">Conoce mi enfoque</span></span>
-            </button>
-            <button class="term-btn" onclick="runTerminal('projects')" aria-label="Ver proyectos">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M8 9h13"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Proyectos</span><span class="term-btn-desc">Explora trabajos realizados</span></span>
-            </button>
-            <button class="term-btn" onclick="runTerminal('services')" aria-label="Ver servicios">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Servicios</span><span class="term-btn-desc">Soluciones digitales</span></span>
-            </button>
-            <button class="term-btn" onclick="runTerminal('skills')" aria-label="Ver habilidades">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Skills</span><span class="term-btn-desc">Tecnologías que utilizo</span></span>
-            </button>
-            <button class="term-btn" onclick="runTerminal('contact')" aria-label="Ver contacto">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Contacto</span><span class="term-btn-desc">Hablemos de tu proyecto</span></span>
-            </button>
-            <button class="term-btn" onclick="runTerminal('help')" aria-label="Ver ayuda">
-              <span class="term-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 1 1 5.2 2c-.9.8-2.3 1.3-2.3 2.7"/><path d="M12 17h.01"/></svg></span>
-              <span class="term-btn-text"><span class="term-btn-label">Ayuda</span><span class="term-btn-desc">Comandos disponibles</span></span>
-            </button>
-          </div>
-          <div class="terminal-screen" id="terminal-screen" aria-live="polite"></div>
-          <div class="terminal-input-row">
-            <span class="terminal-prompt">arenas@portfolio:~$</span>
-            <input class="terminal-input" id="terminal-input" type="text" autocomplete="off" spellcheck="false" placeholder="Escribe un comando..." aria-label="Comando de terminal">
-          </div>
-          <div class="terminal-tip">Puedes tocar los botones o escribir <strong>help</strong> para ver los comandos.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="Portofolio" style="padding-top:0;background:#030014">
-    <div class="sh" data-aos="fade-up" data-aos-duration="1000">
-      <h2 class="stitle">Portafolio</h2>
-      <p class="ssub">Explora mis proyectos y tecnologías. Cada sitio web representa mi compromiso con el diseño y la
-        calidad del código.</p>
-    </div>
-
-    <div class="tbbar">
-      <div class="tbs">
-        <button class="tb act" onclick="switchTab('projects',this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
-          Proyectos
-        </button>
-        <button class="tb" onclick="switchTab('techstack',this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
-            <path d="m7 16.5-4.74-2.85" />
-            <path d="m7 16.5 5-3" />
-            <path d="M7 16.5v5.17" />
-            <path
-              d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
-            <path d="m17 16.5-5-3" />
-            <path d="m17 16.5 4.74-2.85" />
-            <path d="M17 16.5v5.17" />
-            <path
-              d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
-            <path d="M12 8 7.26 5.15" />
-            <path d="m12 8 4.74-2.85" />
-            <path d="M12 13.5V8" />
-          </svg>
-          Tech Stack
-        </button>
-        <button class="tb" onclick="switchTab('reviews',this)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 0-2-2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            <path d="M13 10h.01" />
-            <path d="M9 10h.01" />
-            <path d="M17 10h.01" />
-          </svg>
-          Valoraciones
-        </button>
-      </div>
-    </div>
-
-    <div class="tp act" id="tp-projects">
-      <div class="pg4" id="pg4"></div>
-      <div id="pmore" style="text-align:center"></div>
-    </div>
-    <div class="tp" id="tp-techstack">
-      <div class="tg" id="tg"></div>
-    </div>
-    <div class="tp" id="tp-reviews">
-      <div class="gg-grid" id="gg-grid" style="margin-bottom: 3rem;"></div>
-      <div class="rg" id="rg"></div>
-      <div style="margin-top: 5rem; text-align: center;">
-        <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 1rem;">Evidencia de Resultados</h3>
-        <p style="color: rgba(148, 163, 184, 0.8); font-size: 0.9rem; margin-bottom: 2rem;">Pruebas reales de
-          posicionamiento y validación experta.</p>
-      </div>
-      <div class="ev-grid" id="ev-grid"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="Contact">
-    <div class="sh">
-      <h2 class="stitle" data-aos="fade-down" data-aos-duration="1000">Contáctame</h2>
-      <p class="ssub" data-aos="fade-up" data-aos-duration="1100">¿Tienes una pregunta? Envíame un mensaje y te
-        responderé a la brevedad posible.</p>
-    </div>
-    <div class="cg2" style="padding:0">
-      <!-- Form -->
-      <div class="ccard" data-aos="fade-right" data-aos-duration="1000">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem">
-          <div>
-            <h3 class="cctitle">Contacto</h3>
-            <p class="ccsub">¿Quieres discutir algo? Envíame un mensaje y hablemos.</p>
-          </div>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" style="opacity:.5;flex-shrink:0">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
-            <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
-          </svg>
-        </div>
-        <form id="cform" onsubmit="sendMsg(event)">
-          <div class="fg">
-            <svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-            <input type="text" class="fi" placeholder="Nombre Apellido" required id="fn">
-          </div>
-          <div class="fg">
-            <svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
-            <input type="email" class="fi" placeholder="Email" required id="fe">
-          </div>
-          <div class="fg">
-            <svg class="fic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="top:.85rem">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
-            <textarea class="ft" placeholder="Mensaje" required id="fm" style="padding-left:3rem"></textarea>
-          </div>
-          <div style="margin-top:1.25rem">
-            <button type="submit" class="btp" id="sbtn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
-                <path d="m21.854 2.147-10.94 10.939" />
-              </svg>
-              Enviar mensaje
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Socials -->
-      <div class="soc" data-aos="fade-left" data-aos-duration="1000">
-        <a class="sc3" href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer"
-          style="background:linear-gradient(to right,rgba(131,58,180,.15),rgba(228,64,95,.15));border-color:rgba(228,64,95,.3)">
-          <div class="sc3-ic" style="background:linear-gradient(135deg,#833AB4,#E4405F,#FCAF45)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-            </svg>
-          </div>
-          <div>
-            <div class="sc3-m">Instagram</div>
-            <div class="sc3-s">@05____arenas</div>
-          </div>
-        </a>
-        <a class="sc3" href="https://www.youtube.com/@05____arenas" target="_blank" rel="noopener noreferrer"
-          style="background:linear-gradient(to right,rgba(255,0,0,.15),rgba(204,0,0,.15));border-color:rgba(255,0,0,.3)">
-          <div class="sc3-ic" style="background:linear-gradient(to right,#FF0000,#CC0000)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
-              <path d="m10 15 5-3-5-3z" />
-            </svg>
-          </div>
-          <div>
-            <div class="sc3-m">YouTube</div>
-            <div class="sc3-s">@05____arenas</div>
-          </div>
-        </a>
-        <a class="sc3" href="https://www.tiktok.com/@05___arenas" target="_blank" rel="noopener noreferrer"
-          style="background:linear-gradient(to right,rgba(1,1,1,.5),rgba(37,244,238,.1));border-color:rgba(37,244,238,.2)">
-          <div class="sc3-ic" style="background:#010101">
-            <svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff">
-              <path
-                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.19a8.16 8.16 0 0 0 4.77 1.52V6.27a4.85 4.85 0 0 1-1-.58z" />
-            </svg>
-          </div>
-          <div>
-            <div class="sc3-m">TikTok</div>
-            <div class="sc3-s">@05___arenas</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOAST NOTIFICATION -->
-  <div class="toast" id="toast">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-      <polyline points="22 4 12 14.01 9 11.01" />
-    </svg>
-    <span id="toast-msg">Mensaje enviado exitosamente</span>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><a href="#Home">Arenas</a>. Todos los derechos reservados.</p>
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="inicio" class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Editorial Text Content -->
+          <div class="hero-content reveal-fade">
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot"></span>
+              <span>ARENAS® — DIGITAL CREATIVE STUDIO</span>
+            </div>
+
+            <h1 class="hero-headline">
+              CREO EXPERIENCIAS DIGITALES QUE <span class="gradient-accent">SE HACEN NOTAR.</span>
+            </h1>
+
+            <p class="hero-subtext">
+              Desarrollo sitios web, tiendas online, aplicaciones y soluciones digitales combinando diseño, tecnología e inteligencia artificial.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#proyectos" class="btn btn-primary btn-glow">
+                <span>VER PROYECTOS</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </a>
+              <a href="#contacto" class="btn btn-secondary">
+                <span>HABLEMOS ↗</span>
+              </a>
+            </div>
+
+            <a href="#proyectos" class="scroll-indicator">
+              <span>SCROLL TO EXPLORE</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Floating Project Mockups Showcase -->
+          <div class="hero-visual reveal-fade reveal-delay-2" aria-hidden="true">
+            <div class="showcase-stage">
+              
+              <!-- Floating Card 1: Main (Álvarez Perfumería) -->
+              <div class="mockup-window mockup-1">
+                <div class="mockup-header">
+                  <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="mockup-url">alvarezperfumeria.netlify.app</div>
+                </div>
+                <div class="mockup-content">
+                  <img src="AlvarezPerfumeria.jpeg" alt="Álvarez Perfumería Preview" loading="eager">
+                </div>
+              </div>
+
+              <!-- Floating Card 2: Secondary Top (VehiGrúas) -->
+              <div class="mockup-window mockup-2">
+                <div class="mockup-header">
+                  <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="mockup-url">vehigruas.netlify.app</div>
+                </div>
+                <div class="mockup-content">
+                  <img src="Vehigruas.jpeg" alt="VehiGrúas Preview" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Floating Card 3: Tertiary Bottom (Jean Design IA) -->
+              <div class="mockup-window mockup-3">
+                <div class="mockup-header">
+                  <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="mockup-url">jeandesignia.com</div>
+                </div>
+                <div class="mockup-content">
+                  <img src="JeanDesign.jpeg" alt="Jean Design IA Preview" loading="lazy">
+                </div>
+              </div>
+
+              <!-- Floating Contextual Badges -->
+              <div class="floating-pill pill-1">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#27C93F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>SEO #1 Google Search</span>
+              </div>
+              <div class="floating-pill pill-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5B5CFF" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Lighthouse 98/100</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INFINITE MARQUEE STRIP
+         ========================================================================== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          <span>WEB DESIGN <i class="ticker-star">✦</i></span>
+          <span>E-COMMERCE <i class="ticker-star">✦</i></span>
+          <span>SISTEMAS WEB <i class="ticker-star">✦</i></span>
+          <span>IA & AUTOMATIZACIÓN <i class="ticker-star">✦</i></span>
+          <span>HIGH PERFORMANCE <i class="ticker-star">✦</i></span>
+          <span>CREATIVE CODING <i class="ticker-star">✦</i></span>
+          <span>EXPERIENCIAS DIGITALES <i class="ticker-star">✦</i></span>
+        </div>
+        <div class="ticker-item">
+          <span>WEB DESIGN <i class="ticker-star">✦</i></span>
+          <span>E-COMMERCE <i class="ticker-star">✦</i></span>
+          <span>SISTEMAS WEB <i class="ticker-star">✦</i></span>
+          <span>IA & AUTOMATIZACIÓN <i class="ticker-star">✦</i></span>
+          <span>HIGH PERFORMANCE <i class="ticker-star">✦</i></span>
+          <span>CREATIVE CODING <i class="ticker-star">✦</i></span>
+          <span>EXPERIENCIAS DIGITALES <i class="ticker-star">✦</i></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SELECTED PROJECTS SECTION
+         ========================================================================== -->
+    <section id="proyectos" class="projects-section">
+      <div class="container">
+        
+        <div class="section-header reveal-fade">
+          <div class="section-tag">PORTAFOLIO DE TRABAJOS</div>
+          <h2 class="section-title">PROYECTOS SELECCIONADOS</h2>
+          <p class="section-desc">Una selección de experiencias digitales que he diseñado y desarrollado.</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="projects-filter-bar reveal-fade">
+          <button class="filter-btn active" data-filter="all">
+            <span>Todos los Proyectos</span>
+            <span class="filter-count">8</span>
+          </button>
+          <button class="filter-btn" data-filter="ecommerce">
+            <span>E-Commerce & Catálogos</span>
+            <span class="filter-count">2</span>
+          </button>
+          <button class="filter-btn" data-filter="landings">
+            <span>Landings & Negocios</span>
+            <span class="filter-count">3</span>
+          </button>
+          <button class="filter-btn" data-filter="platforms">
+            <span>Plataformas & Portafolios</span>
+            <span class="filter-count">3</span>
+          </button>
+        </div>
+
+        <!-- Moderate & Organized Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- PROJECT 01: Álvarez Perfumería -->
+          <article class="project-card reveal-fade" data-category="ecommerce">
+            <div class="project-media">
+              <span class="project-badge-top">E-Commerce · Perfumes</span>
+              <span class="project-num-badge">01</span>
+              <img src="AlvarezPerfumeria.jpeg" alt="Álvarez Perfumería — E-Commerce" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Álvarez Perfumería</h3>
+                <span class="project-role-badge">Tienda Online con Catálogo Dinámico</span>
+                <p class="project-desc">
+                  Plataforma de comercio electrónico para perfumería de alta gama con catálogo de fragancias, navegación fluida y optimización para captación de clientes y ventas directas.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Catálogo Interactivo · Conversión Directa</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">UI/UX Design</span>
+                </div>
+              </div>
+              <a href="https://alvarezperfumeria.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 02: Ateneas Luxury -->
+          <article class="project-card reveal-fade reveal-delay-1" data-category="platforms">
+            <div class="project-media">
+              <span class="project-badge-top">Luxury Branding · Web</span>
+              <span class="project-num-badge">02</span>
+              <img src="AteneasLuxury.jpeg" alt="Ateneas Luxury — Sitio Web de Lujo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Ateneas Luxury</h3>
+                <span class="project-role-badge">Plataforma Web Exclusiva con Dominio Privado</span>
+                <p class="project-desc">
+                  Sitio web de alto impacto con dominio privado, paleta sofisticada y una experiencia premium orientada a proyectar exclusividad, solidez y confianza internacional.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Dominio Privado · Experiencia Premium</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">ReactJS</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                  <span class="tech-tag">Vite</span>
+                  <span class="tech-tag">Performance</span>
+                </div>
+              </div>
+              <a href="https://ateneas-luxury.com" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 03: VehiGrúas -->
+          <article class="project-card reveal-fade reveal-delay-2" data-category="landings">
+            <div class="project-media">
+              <span class="project-badge-top">Landing Page · Conversión</span>
+              <span class="project-num-badge">03</span>
+              <img src="Vehigruas.jpeg" alt="VehiGrúas — Plataforma de Asistencia" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">VehiGrúas</h3>
+                <span class="project-role-badge">Servicio de Asistencia Vehicular Urgente</span>
+                <p class="project-desc">
+                  Plataforma de alta velocidad diseñada para generar llamadas inmediatas y posicionarse en los primeros resultados de búsqueda local de Google.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Ranking #1 SEO Local · Lighthouse 98</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">SEO Local</span>
+                  <span class="tech-tag">Call-to-Action</span>
+                  <span class="tech-tag">Mobile-First</span>
+                  <span class="tech-tag">CRO</span>
+                </div>
+              </div>
+              <a href="https://vehigruas.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 04: Jean Design IA -->
+          <article class="project-card reveal-fade" data-category="platforms">
+            <div class="project-media">
+              <span class="project-badge-top">Innovación · Soluciones Web</span>
+              <span class="project-num-badge">04</span>
+              <img src="JeanDesign.jpeg" alt="Jean Design IA — Plataforma Web" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Jean Design IA</h3>
+                <span class="project-role-badge">Solución Digital Dinámica con Dominio Privado</span>
+                <p class="project-desc">
+                  Plataforma web dinámica con dominio privado, diseño de vanguardia y arquitectura interactiva pensada para soluciones digitales e inteligencia artificial.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Dominio Privado · Arquitectura Dinámica</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">Dominio Privado</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">IA Integration</span>
+                  <span class="tech-tag">Responsive</span>
+                </div>
+              </div>
+              <a href="https://jeandesignia.com" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 05: Brylica Joyería -->
+          <article class="project-card reveal-fade reveal-delay-1" data-category="ecommerce">
+            <div class="project-media">
+              <span class="project-badge-top">E-Commerce · Catálogo</span>
+              <span class="project-num-badge">05</span>
+              <img src="brylicajoyerai.jpeg" alt="Brylica Joyería — Catálogo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Brylica Joyería</h3>
+                <span class="project-role-badge">Catálogo de Joyas y Accesorios de Autor</span>
+                <p class="project-desc">
+                  Tienda online de joyería fina con catálogo visual interactivo, cuidada presentación de piezas y diseño minimalista que eleva el valor percibido de la marca.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Catálogo Visual · Experiencia de Marca</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">Catálogo Online</span>
+                  <span class="tech-tag">Diseño Minimalista</span>
+                  <span class="tech-tag">E-Commerce</span>
+                </div>
+              </div>
+              <a href="https://brylicajoyeria.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 06: Valen Makeup -->
+          <article class="project-card reveal-fade reveal-delay-2" data-category="landings">
+            <div class="project-media">
+              <span class="project-badge-top">Belleza · Portafolio & Citas</span>
+              <span class="project-num-badge">06</span>
+              <img src="valenmakeup.jpeg" alt="Valen Makeup — Belleza y Citas" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Valen Makeup</h3>
+                <span class="project-role-badge">Sitio Web para Estudio de Maquillaje</span>
+                <p class="project-desc">
+                  Sitio web editorial de belleza y maquillaje profesional, con enfoque en reservas de citas, portafolio estético y presentación de servicios exclusivos.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Diseño Editorial · Captación de Citas</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">Diseño Editorial</span>
+                  <span class="tech-tag">Reservas Web</span>
+                  <span class="tech-tag">Mobile First</span>
+                </div>
+              </div>
+              <a href="#contacto" class="project-action-btn">
+                <span>VER DETALLES</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 07: Joss Design -->
+          <article class="project-card reveal-fade" data-category="platforms">
+            <div class="project-media">
+              <span class="project-badge-top">Portafolio · Diseño</span>
+              <span class="project-num-badge">07</span>
+              <img src="jossdesign.jpeg" alt="Joss Design — Portafolio Creativo" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Joss Design</h3>
+                <span class="project-role-badge">Portafolio Creativo de Identidad Visual</span>
+                <p class="project-desc">
+                  Portafolio interactivo de diseño visual con micro-animaciones fluidas, galería de proyectos creativos y presentación moderna de identidad de marca.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Micro-animaciones · Presentación Visual</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">Portafolio</span>
+                  <span class="tech-tag">Micro-animaciones</span>
+                  <span class="tech-tag">JavaScript</span>
+                </div>
+              </div>
+              <a href="https://jossdesign.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJECT 08: Palo Verde Esmeralda -->
+          <article class="project-card reveal-fade reveal-delay-1" data-category="landings">
+            <div class="project-media">
+              <span class="project-badge-top">Sitio Corporativo · Empresa</span>
+              <span class="project-num-badge">08</span>
+              <img src="Posicionados1.jpeg" alt="Palo Verde Esmeralda — Sitio Web Empresarial" loading="lazy">
+            </div>
+            <div class="project-content">
+              <div>
+                <h3 class="project-title">Palo Verde Esmeralda</h3>
+                <span class="project-role-badge">Presencia Web Empresarial Sólida</span>
+                <p class="project-desc">
+                  Sitio web corporativo con identidad visual sólida, diseño responsivo y arquitectura clara para comunicación empresarial y captación de clientes.
+                </p>
+                <div class="project-spec-row">
+                  <span>Enfoque:</span> <strong>Identidad Corporativa · Responsive Core</strong>
+                </div>
+                <div class="project-techs">
+                  <span class="tech-tag">HTML5</span>
+                  <span class="tech-tag">CSS3</span>
+                  <span class="tech-tag">Responsive</span>
+                  <span class="tech-tag">Branding</span>
+                </div>
+              </div>
+              <a href="https://paloverde-esmeralda.netlify.app" target="_blank" rel="noopener noreferrer" class="project-action-btn">
+                <span>VER PROYECTO</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SERVICES SECTION
+         ========================================================================== -->
+    <section id="servicios" class="services-section">
+      <div class="container">
+        
+        <div class="section-header reveal-fade">
+          <div class="section-tag">CAPACIDADES TÉCNICAS Y VISUALES</div>
+          <h2 class="section-title">LO QUE PUEDO CREAR</h2>
+          <p class="section-desc">Soluciones digitales pensadas para negocios, marcas y proyectos que quieren crecer.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <!-- Service 01 -->
+          <div class="service-card reveal-fade">
+            <div>
+              <div class="service-header">
+                <span class="service-num">01</span>
+                <div class="service-icon-box">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="service-title">WEB DESIGN</h3>
+              <p class="service-desc">
+                Diseño de experiencias web modernas, visuales y adaptadas a la identidad de cada marca. Enfoque editorial, tipografía cuidada y estética memorable.
+              </p>
+            </div>
+            <ul class="service-features">
+              <li>Landings de alta conversión</li>
+              <li>Sitios corporativos y portafolios</li>
+              <li>Arquitectura de diseño responsive</li>
+            </ul>
+          </div>
+
+          <!-- Service 02 -->
+          <div class="service-card reveal-fade reveal-delay-1">
+            <div>
+              <div class="service-header">
+                <span class="service-num">02</span>
+                <div class="service-icon-box">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="service-title">E-COMMERCE</h3>
+              <p class="service-desc">
+                Tiendas online, catálogos interactivos y experiencias de compra ágiles, optimizadas para transformar visitantes en clientes fieles.
+              </p>
+            </div>
+            <ul class="service-features">
+              <li>Catálogos rápidos y elegantes</li>
+              <li>Integración de pagos y pedidos</li>
+              <li>Optimización para ventas móviles</li>
+            </ul>
+          </div>
+
+          <!-- Service 03 -->
+          <div class="service-card reveal-fade reveal-delay-2">
+            <div>
+              <div class="service-header">
+                <span class="service-num">03</span>
+                <div class="service-icon-box">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="service-title">SISTEMAS WEB</h3>
+              <p class="service-desc">
+                Aplicaciones a medida, paneles administrativos, sistemas de reservas y herramientas digitales que resuelven necesidades operativas reales.
+              </p>
+            </div>
+            <ul class="service-features">
+              <li>Paneles de control y dashboards</li>
+              <li>Sistemas de agenda y cotización</li>
+              <li>Bases de datos y APIs robustas</li>
+            </ul>
+          </div>
+
+          <!-- Service 04 -->
+          <div class="service-card reveal-fade reveal-delay-3">
+            <div>
+              <div class="service-header">
+                <span class="service-num">04</span>
+                <div class="service-icon-box">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a4 4 0 0 0-4 4v2a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"></path>
+                    <path d="M18 12a6 6 0 0 1-12 0"></path>
+                    <line x1="12" y1="18" x2="12" y2="22"></line>
+                    <line x1="8" y1="22" x2="16" y2="22"></line>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="service-title">IA & AUTOMATIZACIÓN</h3>
+              <p class="service-desc">
+                Automatización de flujos de trabajo repetitivos e integración de modelos de inteligencia artificial para acelerar procesos y potenciar el negocio.
+              </p>
+            </div>
+            <ul class="service-features">
+              <li>Automatización de respuestas y leads</li>
+              <li>Herramientas inteligentes asistidas</li>
+              <li>Procesamiento y optimización de datos</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         "NO SOLO HAGO WEBS" MANIFESTO SECTION
+         ========================================================================== -->
+    <section class="manifesto-section">
+      <div class="container">
+        <div class="manifesto-tag reveal-fade">FILOSOFÍA DE TRABAJO</div>
+        <h2 class="manifesto-title reveal-fade">NO SOLO HAGO WEBS.</h2>
+
+        <div class="manifesto-verbs reveal-fade reveal-delay-1">
+          <span class="manifesto-verb active">CREO</span>
+          <span class="manifesto-verb">DISEÑO</span>
+          <span class="manifesto-verb">DESARROLLO</span>
+          <span class="manifesto-verb">AUTOMATIZO</span>
+        </div>
+
+        <p class="manifesto-desc reveal-fade reveal-delay-2">
+          Convierto ideas y necesidades de negocio en experiencias digitales funcionales, atractivas y rentables.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION
+         ========================================================================== -->
+    <section id="sobre-mi" class="about-section">
+      <div class="container">
+        
+        <div class="about-grid">
+          
+          <!-- Photo Profile Framing -->
+          <div class="about-photo-wrapper reveal-fade">
+            <img src="Arenas.png" alt="Juan Arenas — Desarrollador Front-End & Diseñador Digital" loading="lazy">
+            <div class="about-status-badge">
+              <span class="status-dot"></span>
+              <span class="status-text">Disponible para nuevos proyectos y consultoría</span>
+            </div>
+          </div>
+
+          <!-- Editorial Bio & Philosophy -->
+          <div class="about-content reveal-fade reveal-delay-1">
+            <div class="section-tag">PERFIL PROFESIONAL</div>
+            <h2 class="about-greeting">Hola, soy Arenas.</h2>
+            
+            <p class="about-text">
+              Soy estudiante de Ingeniería Informática enfocado en desarrollo Front-End y en la creación de experiencias digitales de alto impacto. Me apasiona unir la sensibilidad estética del diseño moderno con la precisión técnica de la programación.
+            </p>
+
+            <div class="about-quote-box">
+              <blockquote>
+                "Usando la IA como herramienta profesional, no como reemplazo."
+              </blockquote>
+            </div>
+
+            <p class="about-text" style="font-size:1.05rem">
+              Mi enfoque consiste en comprender el objetivo comercial de cada cliente, diseñar interfaces fluidas que enamoren a los usuarios y construir código optimizado que cargue en milisegundos.
+            </p>
+
+            <div class="about-pillars">
+              <div class="pillar-item">
+                <div class="pillar-num">01</div>
+                <div class="pillar-title">Criterio Visual</div>
+                <div class="pillar-desc">Diseño intencional que diferencia tu marca de la competencia.</div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-num">02</div>
+                <div class="pillar-title">Código Rápido</div>
+                <div class="pillar-desc">Estructuras limpias pensadas para máxima velocidad y SEO.</div>
+              </div>
+              <div class="pillar-item">
+                <div class="pillar-num">03</div>
+                <div class="pillar-title">Conversión Real</div>
+                <div class="pillar-desc">Orientado a generar llamadas, contactos y ventas efectivas.</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TIMELINE / EVOLUTION SECTION
+         ========================================================================== -->
+    <section class="timeline-section">
+      <div class="container">
+        
+        <div class="section-header reveal-fade" style="text-align:center;margin-bottom:3.5rem;">
+          <div class="section-tag">TRAYECTORIA & ENFOQUE</div>
+          <h2 class="section-title">EVOLUCIÓN CONSTANTE</h2>
+          <p class="section-desc" style="margin:0 auto">Un camino guiado por la curiosidad técnica, el rigor en cada entrega y la adopción de nuevas tecnologías.</p>
+        </div>
+
+        <div class="timeline-track reveal-fade reveal-delay-1">
+          <div class="timeline-step">
+            <div class="step-node">01</div>
+            <div class="step-title">Inicio</div>
+            <div class="step-desc">Fundamentos de computación e ingeniería informática.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-node">02</div>
+            <div class="step-title">Aprendizaje</div>
+            <div class="step-desc">Dominio de estándares web, responsive design y UI.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-node">03</div>
+            <div class="step-title">Proyectos</div>
+            <div class="step-desc">Despliegue de soluciones reales con clientes y marcas.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-node">04</div>
+            <div class="step-title">E-Commerce</div>
+            <div class="step-desc">Tiendas online, catálogos y plataformas transaccionales.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-node">05</div>
+            <div class="step-title">Sistemas</div>
+            <div class="step-desc">Plataformas personalizadas y herramientas a medida.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-node">06</div>
+            <div class="step-title">IA & Futuro</div>
+            <div class="step-desc">Automatizaciones e integración de inteligencia artificial.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TECH STACK SECTION
+         ========================================================================== -->
+    <section class="stack-section">
+      <div class="container">
+        
+        <div class="section-header reveal-fade">
+          <div class="section-tag">HERRAMIENTAS & LENGUAJES</div>
+          <h2 class="section-title">STACK TECNOLÓGICO</h2>
+          <p class="section-desc">Tecnologías consolidadas y herramientas de última generación que utilizo para construir soluciones sólidas.</p>
+        </div>
+
+        <div class="stack-grid">
+          
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" loading="lazy">
+            </div>
+            <span class="stack-name">HTML5</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" loading="lazy">
+            </div>
+            <span class="stack-name">CSS3</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
+            </div>
+            <span class="stack-name">JavaScript</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="ReactJS" loading="lazy">
+            </div>
+            <span class="stack-name">ReactJS</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" onerror="this.src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'" loading="lazy">
+            </div>
+            <span class="stack-name">Tailwind CSS</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" alt="Vite" loading="lazy">
+            </div>
+            <span class="stack-name">Vite</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy">
+            </div>
+            <span class="stack-name">Python</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" loading="lazy">
+            </div>
+            <span class="stack-name">PHP</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" loading="lazy">
+            </div>
+            <span class="stack-name">SQL</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy">
+            </div>
+            <span class="stack-name">Git</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="#FFFFFF"><path d="m12 1 12 21H0z"/></svg>
+            </div>
+            <span class="stack-name">Vercel</span>
+          </div>
+
+          <div class="stack-card reveal-fade">
+            <div class="stack-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <span class="stack-name">Inteligencia Artificial</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SOCIAL PROOF: METRICS, REVIEWS & EVIDENCE
+         ========================================================================== -->
+    <section class="proof-section">
+      <div class="container">
+        
+        <div class="section-header reveal-fade">
+          <div class="section-tag">VALIDACIÓN & RESULTADOS</div>
+          <h2 class="section-title">EVIDENCIA DE IMPACTO</h2>
+          <p class="section-desc">Resultados medibles y opiniones de personas que confiaron en mi trabajo.</p>
+        </div>
+
+        <!-- Google Key Metrics -->
+        <div class="metrics-row reveal-fade">
+          <div class="metric-card">
+            <div class="metric-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="metric-value">#1 Google Search</div>
+              <div class="metric-label">Posicionamiento SEO Local</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <div class="metric-value">98 / 100</div>
+              <div class="metric-label">Lighthouse Performance</div>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <div>
+              <div class="metric-value">+45% Mensual</div>
+              <div class="metric-label">Aumento en Tasa de Conversión</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real Client Reviews -->
+        <div class="reviews-grid">
+          
+          <div class="review-card reveal-fade">
+            <div class="quote-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+            </div>
+            <p class="review-text">
+              "El trabajo de Arenas superó nuestras expectativas. Logró capturar la elegancia de nuestra marca y el posicionamiento en Google ha sido increíble."
+            </p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">JP</div>
+              <div>
+                <div class="reviewer-name">Juan Pérez</div>
+                <div class="reviewer-role">CEO de Álvarez Perfumería</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal-fade reveal-delay-1">
+            <div class="quote-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+            </div>
+            <p class="review-text">
+              "Profesionalismo puro. Nuestra web ahora refleja el lujo que vendemos y la experiencia de usuario es impecable en cualquier dispositivo."
+            </p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">MG</div>
+              <div>
+                <div class="reviewer-name">María García</div>
+                <div class="reviewer-role">Directora de Ateneas Luxury</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal-fade reveal-delay-2">
+            <div class="quote-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+            </div>
+            <p class="review-text">
+              "Gracias a la web de VehiGrúas, hemos aumentado nuestras llamadas diarias. El trabajo de SEO y la velocidad de carga es lo que más nos ha sorprendido."
+            </p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">CR</div>
+              <div>
+                <div class="reviewer-name">Carlos Ruiz</div>
+                <div class="reviewer-role">Fundador de VehiGrúas</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Real SEO Evidence Images -->
+        <div class="evidences-grid reveal-fade">
+          <div class="evidence-card" onclick="window.open('Posicionados1.jpeg', '_blank')">
+            <img src="Posicionados1.jpeg" alt="Ranking en Google - Búsqueda Orgánica" loading="lazy">
+            <div class="evidence-caption">
+              <span>Ranking #2 en Google (Búsqueda Orgánica)</span>
+              <span>↗</span>
+            </div>
+          </div>
+
+          <div class="evidence-card" onclick="window.open('Valoracion1.jpeg', '_blank')">
+            <img src="Valoracion1.jpeg" alt="Valoración Positiva de Expertos SEO" loading="lazy">
+            <div class="evidence-caption">
+              <span>Valoración Positiva de Expertos SEO</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         REAL STATS COUNTER STRIP
+         ========================================================================== -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid reveal-fade">
+          <div class="stat-item">
+            <div class="stat-num">+7</div>
+            <div class="stat-label">Proyectos Reales</div>
+            <div class="stat-sub">Desplegados en producción</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Años de Enfoque</div>
+            <div class="stat-sub">Desarrollo Front-End & Web</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">#1</div>
+            <div class="stat-label">SEO Local</div>
+            <div class="stat-sub">Posicionamiento en búsquedas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Compromiso</div>
+            <div class="stat-sub">Diseño a medida sin plantillas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED CALL TO ACTION (CTA)
+         ========================================================================== -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box reveal-fade">
+          <div class="section-tag" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#FFFFFF">INICIA TU PROYECTO</div>
+          <h2 class="cta-title">¿TIENES UNA IDEA?</h2>
+          <p class="cta-desc">Cuéntame qué quieres construir y creemos una experiencia digital que destaque.</p>
+          <a href="#contacto" class="btn btn-primary btn-glow" style="padding:1.1rem 2.6rem;font-size:1rem;">
+            <span>HABLEMOS DE TU PROYECTO ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section id="contacto" class="contact-section">
+      <div class="container">
+        
+        <div class="contact-grid">
+          
+          <!-- Contact Info Column -->
+          <div class="contact-info-col reveal-fade">
+            <div>
+              <div class="section-tag">CANAL DIRECTO</div>
+              <h2 class="section-title">CONTACTO</h2>
+              <p class="section-desc">
+                ¿Tienes una idea, un negocio o un proyecto que necesita cobrar vida en la web? Envíame un mensaje y definamos el siguiente paso.
+              </p>
+            </div>
+
+            <div class="contact-direct-links">
+              <div class="direct-link-card">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <div class="direct-title">Formulario Directo</div>
+                  <div class="direct-value">Respuesta en menos de 24 horas</div>
+                </div>
+              </div>
+
+              <div class="direct-link-card">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                  <div class="direct-title">Disponibilidad</div>
+                  <div class="direct-value">Abierto a proyectos & freelance</div>
+                </div>
+              </div>
+
+              <div class="direct-link-card">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <div class="direct-title">Ubicación</div>
+                  <div class="direct-value">Colombia · Disponible Remoto Global</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-card reveal-fade reveal-delay-1">
+            <form id="contactForm" novalidate>
+              
+              <div class="form-group">
+                <label for="userName" class="form-label">Nombre</label>
+                <input type="text" id="userName" name="name" class="form-input" placeholder="Tu nombre o empresa" required>
+              </div>
+
+              <div class="form-group">
+                <label for="userEmail" class="form-label">Email</label>
+                <input type="email" id="userEmail" name="email" class="form-input" placeholder="correo@ejemplo.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="userMessage" class="form-label">Mensaje</label>
+                <textarea id="userMessage" name="message" class="form-textarea" placeholder="Cuéntame sobre tu proyecto, objetivos o preguntas..." required></textarea>
+              </div>
+
+              <button type="submit" id="submitBtn" class="btn btn-primary btn-glow" style="width:100%;padding:1.1rem">
+                <span>ENVIAR MENSAJE ↗</span>
+              </button>
+
+              <!-- State Feedbacks (No alerts) -->
+              <div id="formSuccess" class="form-feedback success">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>¡Mensaje enviado con éxito! Te responderé muy pronto.</span>
+              </div>
+
+              <div id="formError" class="form-feedback error">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <span>Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo.</span>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SOCIAL NETWORKS SECTION
+         ========================================================================== -->
+    <section class="socials-section">
+      <div class="container">
+        
+        <div class="socials-grid reveal-fade">
+          
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer" class="social-card social-instagram">
+            <div class="social-left">
+              <div class="social-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="social-platform">Instagram</div>
+                <div class="social-handle">@05____arenas</div>
+              </div>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@05____arenas" target="_blank" rel="noopener noreferrer" class="social-card social-youtube">
+            <div class="social-left">
+              <div class="social-icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+              </div>
+              <div>
+                <div class="social-platform">YouTube</div>
+                <div class="social-handle">@05____arenas</div>
+              </div>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@05___arenas" target="_blank" rel="noopener noreferrer" class="social-card social-tiktok">
+            <div class="social-left">
+              <div class="social-icon-wrapper">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.19a8.16 8.16 0 0 0 4.77 1.52V6.27a4.85 4.85 0 0 1-1-.58z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="social-platform">TikTok</div>
+                <div class="social-handle">@05___arenas</div>
+              </div>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#inicio" class="brand-logo">
+            <span class="brand-name">ARENAS<sup style="font-size:0.6em;color:var(--blue-violet)">®</sup></span>
+            <span class="brand-badge">STUDIO</span>
+          </a>
+          <p class="footer-brand-desc">
+            Desarrollo de experiencias web, tiendas online y soluciones digitales diseñadas para destacar y generar resultados.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div>
+            <div class="footer-col-title">Navegación</div>
+            <ul class="footer-links">
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#proyectos">Proyectos</a></li>
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#sobre-mi">Sobre mí</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Redes</div>
+            <ul class="footer-links">
+              <li><a href="https://www.instagram.com/05____arenas" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+              <li><a href="https://www.youtube.com/@05____arenas" target="_blank" rel="noopener noreferrer">YouTube ↗</a></li>
+              <li><a href="https://www.tiktok.com/@05___arenas" target="_blank" rel="noopener noreferrer">TikTok ↗</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© Arenas. Todos los derechos reservados.</div>
+        <div>Diseñado & Desarrollado con Criterio y Precisión</div>
+      </div>
+    </div>
   </footer>
 
-  <!-- MUSIC CONTROL -->
-  <button class="music-btn" id="music-btn" onclick="toggleMusic()" aria-label="Reproducir/Pausar Música">
-    <svg class="music-icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-    </svg>
-    <svg class="music-icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <rect x="6" y="4" width="4" height="16"></rect>
-      <rect x="14" y="4" width="4" height="16"></rect>
-    </svg>
+  <!-- ==========================================================================
+       AMBIENT SOUND / MUSIC CONTROL
+       ========================================================================== -->
+  <button class="music-toggle-btn" id="musicToggle" aria-label="Activar o pausar música ambiental" title="Música ambiental">
+    <div class="music-wave">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </button>
-  <audio id="bg-music" loop src="Music.mp3"></audio>
+  <audio id="bgMusic" loop src="Music.mp3" preload="none"></audio>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: false, mirror: false });
-
-    // TYPEWRITER
-    const TW = 'arenas.dev'; let ti = 0;
-    const tEl = document.getElementById('tw');
-    function typeIt() { if (ti <= TW.length) { tEl.textContent = TW.slice(0, ti++); setTimeout(typeIt, 260) } }
-    typeIt();
-
-    // WELCOME SCREEN
-    const ws = document.getElementById('ws');
-    function dismissWelcome() {
-      if (!ws.classList.contains('gone')) {
-        ws.classList.add('gone');
-        setTimeout(() => { ws.style.display = 'none'; initCounters(); }, 900);
-        tryStartMusic();
-      }
-    }
-
-    // Cerrar automáticamente tras 3.4s
-    setTimeout(dismissWelcome, 3400);
-
-    // Cerrar al hacer clic (esto activa el audio en navegadores)
-    ws.addEventListener('click', dismissWelcome);
-
-    // PHOTO fallback
-    const img = document.getElementById('photo-img');
-    if (img) {
-      img.onerror = () => { img.style.display = 'none'; document.getElementById('photo-no').style.display = 'flex' };
-    }
-
-    // NAVBAR
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('sc', window.scrollY > 40);
-      ['Home', 'Portofolio', 'Contact'].forEach(id => {
-        const s = document.getElementById(id);
-        const a = document.querySelector(`.nls a[href="#${id}"]`);
-        if (!s || !a) return;
-        const r = s.getBoundingClientRect();
-        a.classList.toggle('act', r.top <= 100 && r.bottom > 100);
-      });
-    });
-
-    function openSB() { document.getElementById('sb').classList.add('op'); document.getElementById('ov').classList.add('op'); document.body.style.overflow = 'hidden' }
-    function closeSB() { document.getElementById('sb').classList.remove('op'); document.getElementById('ov').classList.remove('op'); document.body.style.overflow = '' }
-
-    function switchTab(name, btn) {
-      document.querySelectorAll('.tb').forEach(b => b.classList.remove('act'));
-      document.querySelectorAll('.tp').forEach(p => p.classList.remove('act'));
-      btn.classList.add('act');
-      document.getElementById('tp-' + name).classList.add('act');
-      AOS.refresh();
-    }
-
-    // MUSIC CONTROL SYSTEM
-    const audio = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('music-btn');
-    let isPlaying = false;
-
-    function tryStartMusic() {
-      if (audio) {
-        audio.play().then(() => {
-          isPlaying = true;
-          if (musicBtn) musicBtn.classList.add('playing');
-        }).catch(() => {
-          isPlaying = false;
-          if (musicBtn) musicBtn.classList.remove('playing');
-        });
-      }
-    }
-
-    function toggleMusic() {
-      if (!audio) return;
-      if (isPlaying) {
-        audio.pause();
-        isPlaying = false;
-        if (musicBtn) musicBtn.classList.remove('playing');
-      } else {
-        audio.play().then(() => {
-          isPlaying = true;
-          if (musicBtn) musicBtn.classList.add('playing');
-        });
-      }
-    }
-
-    // COUNTERS ANIMATION
-    let animated = false;
-    function initCounters() {
-      if (animated) return;
-      animated = true;
-      animateVal('sp', 0, projects.length, 1500);
-      animateVal('sy', 0, 2, 1500);
-    }
-
-    function animateVal(id, start, end, duration) {
-      const obj = document.getElementById(id);
-      if (!obj) return;
-      let startTimestamp = null;
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start);
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      window.requestAnimationFrame(step);
-    }
-
-    // TOAST NOTIFICATION
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-      if (!toast) return;
-      if (toastMsg) toastMsg.textContent = msg;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3500);
-    }
-
-    // FORM SUBMISSION
-    function sendMsg(e) {
-      e.preventDefault();
-      const btn = document.getElementById('sbtn');
-      if (btn) {
-        btn.disabled = true;
-        btn.style.opacity = '0.6';
-      }
-      setTimeout(() => {
-        showToast('¡Mensaje enviado con éxito! Me pondré en contacto pronto.');
-        document.getElementById('cform').reset();
-        if (btn) {
-          btn.disabled = false;
-          btn.style.opacity = '1';
-        }
-      }, 1000);
-    }
-
-    // PROJECT ICONS (SVG)
-    const icons = {
-      store: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><path d="M3 9l1-5h16l1 5"/><path d="M3 9a2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 2 2 2 2 0 0 0 2-2"/><path d="M5 11v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/><path d="M10 21v-6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6"/></svg>`,
-      truck: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>`,
-      gem: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><polygon points="6 3 18 3 22 9 12 22 2 9"/><polyline points="22 9 12 9 6 3"/><line x1="12" y1="22" x2="12" y2="9"/></svg>`,
-      leaf: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
-      palette: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`,
-      crown: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>`,
-      gamepad: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:2.8rem;height:2.8rem"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg>`,
-    };
-
-    const projects = [
-      { title: 'Jean Design IA', desc: 'Plataforma web con dominio privado, diseño dinámico, moderno y enfocado en soluciones digitales.', link: 'https://jeandesignia.com', image: 'JeanDesign.jpeg' },
-      { title: 'Valen Makeup', desc: 'Tienda web de maquillaje con catálogo de productos, presentación moderna y experiencia de compra.', link: 'https://valen-makeup.kyte.site/', image: 'valenmakeup.jpeg' },
-      { title: 'VehiGrúas', desc: 'Plataforma web para servicio de grúas vehiculares con información de contacto y servicios disponibles.', link: 'https://vehigruas.netlify.app', image: 'vehigruas.jpeg' },
-      { title: 'Ateneas Luxury', desc: 'Sitio web de lujo con estética refinada y experiencia premium para el usuario.', link: 'https://ateneas-luxury.com', image: 'AteneasLuxury.jpeg' },
-      { title: 'Álvarez Perfumería', desc: 'Sitio web para perfumería con catálogo de productos, diseño elegante y experiencia de usuario cuidada.', link: 'https://alvarezperfumeria.netlify.app', image: 'ÁlvarezPerfumeria.jpeg' },
-      { title: 'Brylica Joyería', desc: 'Tienda online de joyería con catálogo de productos y diseño sofisticado que refleja la elegancia de la marca.', link: 'https://brylicajoyeria.netlify.app', image: 'brylicajoyeria.jpeg' },
-      { title: 'Joss Design', desc: 'Portafolio creativo de diseño con presentación visual impactante y estética moderna.', link: 'https://jossdesign.netlify.app', image: 'JossDesign.jpeg' },
-    ];
-
-    const reviews = [
-      { name: 'Juan Pérez', role: 'CEO de Álvarez Perfumería', text: '"El trabajo de Arenas superó nuestras expectativas. Logró capturar la elegancia de nuestra marca y el posicionamiento en Google ha sido increíble."', init: 'JP' },
-      { name: 'María García', role: 'Directora de Ateneas Luxury', text: '"Profesionalismo puro. Nuestra web ahora refleja el lujo que vendemos y la experiencia de usuario es impecable."', init: 'MG' },
-      { name: 'Carlos Ruiz', role: 'Fundador de VehiGrúas', text: '"Gracias a la web de VehiGrúas, hemos aumentado nuestras llamadas diarias. El trabajo de SEO es lo que más nos ha sorprendido."', init: 'CR' },
-    ];
-
-    const googleMetrics = [
-      { lbl: 'Posicionamiento Local', val: '#1 Google Search', icon: 'trending-up' },
-      { lbl: 'Optimización SEO', val: '98/100 Lighthouse', icon: 'zap' },
-      { lbl: 'Tasa de Conversión', val: '+45% Mensual', icon: 'bar-chart' },
-    ];
-
-    const evidences = [
-      { img: 'Posicionados1.jpeg', cap: 'Ranking #2 en Google (Búsqueda Orgánica)' },
-      { img: 'Valoracion1.jpeg', cap: 'Valoración Positiva de Expertos SEO' }
-    ];
-
-    const techs = [
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', name: 'HTML5' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', name: 'CSS3' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', name: 'JavaScript' },
-      { img: 'https://tse1.mm.bing.net/th/id/OIP.GdUWbrVtbNezIRl6jg_ymAHaEh?rs=1&pid=ImgDetMain&o=7&rm=3', name: 'Tailwind CSS' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', name: 'ReactJS' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg', name: 'Vite' },
-      { img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', name: 'Bootstrap' },
-    ];
-
-    const PER = 7; let showAll = false;
-    function renderProjects() {
-      const vis = showAll ? projects : projects.slice(0, PER);
-      document.getElementById('pg4').innerHTML = vis.map((p, i) => {
-        const d = i % 3 === 0 ? 'fade-up-right' : i % 3 === 1 ? 'fade-up' : 'fade-up-left';
-        const dur = i % 3 === 1 ? '1200' : '1000';
-        return `<div data-aos="${d}" data-aos-duration="${dur}">
-      <a class="pcard" href="${p.link}" target="_blank" rel="noopener noreferrer" aria-label="Visitar ${p.title}">
-        <div class="pov"></div>
-        <div class="pi2">
-          <div class="pimgw">
-            <img src="${p.image}" alt="Portada de ${p.title}" loading="lazy" onerror="this.style.display='none'">
-          </div>
-          <h3 class="ptitle">${p.title}</h3>
-          <p class="pdesc">${p.desc}</p>
-          <div class="plinks">
-            <span class="pl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Visitar sitio
-            </span>
-            <span class="pl pl2">
-              Abrir proyecto
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </span>
-          </div>
-        </div>
-      </a>
-    </div>`;
-      }).join('');
-      const pm = document.getElementById('pmore');
-      pm.innerHTML = projects.length > PER ? `<button class="smb" onclick="toggleMore()">${showAll ? 'Ver menos' : 'Ver más'}</button>` : '';
-      AOS.refresh();
-    }
-    function toggleMore() { showAll = !showAll; renderProjects() }
-
-    function renderTech() {
-      document.getElementById('tg').innerHTML = techs.map((t, i) => `
-    <div class="tc" data-aos="fade-up" data-aos-delay="${(i % 4) * 150}">
-      <img src="${t.img}" class="tic" alt="${t.name}" onerror="this.style.opacity='.3'">
-      <span class="tn">${t.name}</span>
-    </div>`).join('');
-    }
-
-    function renderReviews() {
-      document.getElementById('gg-grid').innerHTML = googleMetrics.map((m, i) => `
-    <div class="gg-card" data-aos="zoom-in" data-aos-delay="${i * 100}">
-      <div class="gg-ic">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div>
-        <div class="gg-val">${m.val}</div>
-        <div class="gg-lbl">${m.lbl}</div>
-      </div>
-    </div>`).join('');
-
-      document.getElementById('rg').innerHTML = reviews.map((r, i) => `
-    <div class="rc" data-aos="fade-up" data-aos-delay="${i * 150}">
-      <div class="rc-q"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg></div>
-      <p class="rc-t">${r.text}</p>
-      <div class="rc-u">
-        <div class="rc-ua">${r.init}</div>
-        <div>
-          <div class="rc-un">${r.name}</div>
-          <div class="rc-ur">${r.role}</div>
-        </div>
-      </div>
-    </div>`).join('');
-
-      document.getElementById('ev-grid').innerHTML = evidences.map((e, i) => `
-    <div class="ev-card" data-aos="fade-up" data-aos-delay="${i * 150}">
-      <img src="${e.img}" class="ev-img" alt="${e.cap}" onerror="this.src='Logo.png'">
-      <div class="ev-cap">${e.cap}</div>
-    </div>`).join('');
-    }
-
-
-
-    // INTERACTIVE TERMINAL
-    const terminalScreen = document.getElementById('terminal-screen');
-    const terminalInput = document.getElementById('terminal-input');
-
-    const terminalCommands = {
-      about: {
-        title: 'SOBRE MÍ',
-        lines: [
-          ['normal', 'Soy estudiante de Ingeniería Informática enfocado en desarrollo Front-End.'],
-          ['normal', 'Creo experiencias digitales atractivas y busco soluciones prácticas para cada proyecto.'],
-          ['success', '→ Enfoque: diseño + desarrollo + experiencia de usuario']
-        ]
-      },
-      projects: {
-        title: 'PROYECTOS',
-        lines: [
-          ['normal', 'Selecciona un proyecto para abrirlo en una nueva pestaña.']
-        ],
-        projects: true
-      },
-      services: {
-        title: 'SERVICIOS',
-        lines: [
-          ['normal', '→ Desarrollo de páginas web'],
-          ['normal', '→ Sistemas personalizados para empresas'],
-          ['normal', '→ Automatizaciones e integraciones'],
-          ['normal', '→ Soluciones digitales con IA']
-        ]
-      },
-      skills: {
-        title: 'SKILLS',
-        lines: [
-          ['normal', 'HTML5   ·   CSS3   ·   JavaScript'],
-          ['normal', 'ReactJS ·   Vite   ·   Tailwind CSS · Bootstrap'],
-          ['success', '→ Stack orientado a interfaces modernas y responsivas']
-        ]
-      },
-      contact: {
-        title: 'CONTACTO',
-        lines: [
-          ['normal', '¿Tienes un proyecto en mente? Podemos hablar.'],
-          ['success', '→ Desplázate a la sección de contacto para escribir un mensaje.']
-        ]
-      },
-      help: {
-        title: 'COMANDOS DISPONIBLES',
-        lines: [
-          ['normal', 'about      — Conoce mi perfil'],
-          ['normal', 'projects   — Explora mis proyectos'],
-          ['normal', 'services   — Mira lo que desarrollo'],
-          ['normal', 'skills     — Tecnologías que utilizo'],
-          ['normal', 'contact    — Cómo contactarme'],
-          ['normal', 'clear      — Limpia la terminal'],
-          ['muted', 'También puedes tocar cualquiera de los botones de arriba.']
-        ]
-      }
-    };
-
-    function appendTerminalLine(text, type='normal') {
-      const div = document.createElement('div');
-      div.className = 'term-line ' + type;
-      div.textContent = text;
-      terminalScreen.appendChild(div);
-      terminalScreen.scrollTop = terminalScreen.scrollHeight;
-      return div;
-    }
-
-    function appendProjectLine(index, project) {
-      const row = document.createElement('div');
-      row.className = 'term-project';
-      row.innerHTML = `<span>${String(index + 1).padStart(2,'0')}  ${project.title}</span><span>open ↗</span>`;
-      row.addEventListener('click', () => window.open(project.link, '_blank', 'noopener,noreferrer'));
-      terminalScreen.appendChild(row);
-    }
-
-    function typeTerminalText(text, type='normal', speed=10) {
-      const div = document.createElement('div');
-      div.className = 'term-line ' + type;
-      terminalScreen.appendChild(div);
-      let i = 0;
-      const tick = () => {
-        div.textContent = text.slice(0, i++);
-        terminalScreen.scrollTop = terminalScreen.scrollHeight;
-        if (i <= text.length) requestAnimationFrame(tick);
-      };
-      tick();
-    }
-
-    function runTerminal(command) {
-      command = String(command).trim().toLowerCase();
-      if (!command) return;
-      if (command === 'clear') {
-        terminalScreen.innerHTML = '';
-        appendTerminalLine('Terminal limpia. Escribe help para comenzar.', 'muted');
-        return;
-      }
-      const data = terminalCommands[command];
-      appendTerminalLine(`arenas@portfolio:~$ ${command}`, 'cmd');
-      if (!data) {
-        appendTerminalLine(`Comando no reconocido: ${command}`, 'muted');
-        appendTerminalLine('Escribe help o utiliza los botones para explorar.', 'normal');
-        return;
-      }
-      appendTerminalLine(`— ${data.title}`, 'success');
-      data.lines.forEach(([type, text], i) => setTimeout(() => appendTerminalLine(text, type), 90 + i * 80));
-      if (data.projects) {
-        setTimeout(() => projects.forEach((p, i) => appendProjectLine(i, p)), 220);
-      }
-    }
-
-    if (terminalInput) {
-      terminalInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-          const value = terminalInput.value;
-          terminalInput.value = '';
-          runTerminal(value);
-        }
-      });
-    }
-
-    // Initial message: the user immediately sees how to interact.
-    appendTerminalLine('arenas@portfolio:~$ welcome', 'cmd');
-    appendTerminalLine('Bienvenido. Explora la terminal usando los botones o escribiendo un comando.', 'normal');
-    appendTerminalLine('Escribe help para ver todas las opciones disponibles.', 'muted');
-
-    // INITIAL RENDER
-    renderProjects();
-    renderTech();
-    renderReviews();
-  </script>
+  <!-- Interactive Logic -->
+  <script src="script.js"></script>
 </body>
-
 </html>
